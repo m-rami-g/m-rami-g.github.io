@@ -1,0 +1,9 @@
+<!-- Publication Keywords Display Component -->
+{% if page.keywords %}
+<div class="publication-keywords">
+  <strong>Keywords:</strong>
+  {% for keyword in page.keywords %}
+    <span class="keyword-badge">{{ keyword }}</span>
+  {% endfor %}
+</div>
+{% endif %}

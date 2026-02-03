@@ -1,0 +1,42 @@
+/*
+Error: Invalid CSS after "...int/breakpoint"": expected "{", was ";"
+        on line 11 of main.scss
+
+6:  *
+7:  * Note that the files are processed in the order they are imported, so they are partly
+8:    sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
+9:  *\/
+10: 
+11: @import "vendor/breakpoint/breakpoint";
+12: @import "themes";
+13: @import "theme/default_light";
+14: @import "theme/default_dark";
+15: @import "include/mixins";
+16: @import "vendor/susy/susy";
+
+Backtrace:
+main.scss:11
+/home/owl/gems/gems/sass-3.7.4/lib/sass/scss/parser.rb:1308:in `expected'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/scss/parser.rb:1238:in `expected'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/scss/parser.rb:1233:in `tok!'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/scss/parser.rb:688:in `block'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/scss/parser.rb:681:in `ruleset'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/scss/parser.rb:707:in `block_child'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/scss/parser.rb:697:in `block_contents'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/scss/parser.rb:137:in `stylesheet'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/scss/parser.rb:41:in `parse'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/engine.rb:414:in `_to_tree'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:387:in `run'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
+/home/owl/gems/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
+/home/owl/gems/gems/sass-3.7.4/bin/sass:13:in `<top (required)>'
+/home/owl/gems/bin/sass:25:in `load'
+/home/owl/gems/bin/sass:25:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...int/breakpoint\"\": expected \"{\", was \";\"\A         on line 11 of main.scss\A \A 6:  *\A 7:  * Note that the files are processed in the order they are imported, so they are partly\A 8:    sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.\A 9:  */\A 10: \A 11: @import \"vendor/breakpoint/breakpoint\";\A 12: @import \"themes\";\A 13: @import \"theme/default_light\";\A 14: @import \"theme/default_dark\";\A 15: @import \"include/mixins\";\A 16: @import \"vendor/susy/susy\";"; }

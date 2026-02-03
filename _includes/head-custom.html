@@ -1,0 +1,53 @@
+<!-- Custom Security Headers and Meta Tags -->
+{% comment %}
+  Content Security Policy (CSP)
+  This is a strict CSP that prevents XSS attacks and limits resource loading
+{% endcomment %}
+<meta http-equiv="Content-Security-Policy" 
+      content="default-src 'self'; 
+               script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; 
+               style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; 
+               img-src 'self' data: https:; 
+               font-src 'self' https://cdn.jsdelivr.net; 
+               connect-src 'self'; 
+               frame-ancestors 'none'; 
+               form-action 'self';
+               base-uri 'self';
+               report-uri /csp-report/;">
+
+{% include seo-optimization.html %}
+
+{% comment %}
+  Additional security meta tags
+{% endcomment %}
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="date=no">
+<meta name="format-detection" content="address=no">
+<meta name="format-detection" content="email=no">
+
+{% comment %}
+  Privacy-focused meta tags
+{% endcomment %}
+<meta name="robots" content="index, follow, max-image-preview:standard">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+{% comment %}
+  Block AI crawlers specifically
+{% endcomment %}
+<meta name="robots" content="noai, noimageai">
+<meta name="googlebot" content="noai, noimageai">
+
+{% comment %}
+  GDPR compliance tags
+{% endcomment %}
+<meta name="gdpr" content="compliant">
+<meta name="data-collection" content="minimal">
+
+{% comment %}
+  Cache control for security
+{% endcomment %}
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
