@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : 
-site_theme               : "default" # Currently available options are "default", "air"
+site_theme               : "air" # Currently available options are "default", "air"
 title                    : "Personal website"
 title_separator          : "-"
 name                     : &name "Mohamed Rami Gaddem"
