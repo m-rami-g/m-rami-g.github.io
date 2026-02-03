@@ -15,4 +15,4 @@ Systematic review categorizing modeling methodologies for pharmaceutical applica
 
 ## Impact
 
-Cited in FDA&apos;s emerging technology guidelines. The framework helps companies navigate regulatory pathways for model-based process validation, potentially reducing submission review times by 40% for continuous manufacturing applications.
+

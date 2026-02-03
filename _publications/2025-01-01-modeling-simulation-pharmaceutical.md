@@ -16,4 +16,4 @@ Comprehensive review analyzing how computational modeling accelerates pharmaceut
 
 ## Impact
 
-This review has been cited by regulatory agencies considering model-informed drug development guidelines. It provides a framework for implementing modeling strategies that can reduce clinical trial costs by 20-30% and accelerate time-to-market for new therapies.
+This review has been cited by regulatory agencies considering model-informed drug development guidelines.

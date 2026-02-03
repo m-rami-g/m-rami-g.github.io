@@ -15,4 +15,4 @@ Developed a novel CFD model incorporating supercooling phenomena to optimize ste
 
 ## Impact
 
-This research enables scalable stem cell manufacturing for regenerative medicine. The optimized freezing protocol improves cell recovery rates by 35% compared to conventional methods, potentially reducing costs for cell therapy treatments by millions annually.
+This research enables scalable stem cell manufacturing for regenerative medicine.

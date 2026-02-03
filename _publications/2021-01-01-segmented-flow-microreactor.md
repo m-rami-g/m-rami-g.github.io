@@ -16,4 +16,3 @@ Comprehensive CFD model developed for gas-liquid segmented flow in helical micro
 
 ## Impact
 
-Model enables design of intensified reactors for pharmaceutical intermediates production. Implemented in an industrial pilot plant, achieving 40% reduction in solvent usage and 50% decrease in reaction time for API synthesis steps.

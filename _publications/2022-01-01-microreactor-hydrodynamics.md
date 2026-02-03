@@ -15,4 +15,4 @@ Experimental and computational study of a novel microreactor design featuring ar
 
 ## Impact
 
-The arc flow inverter design improves mixing efficiency by 300% compared to straight channels while maintaining compact footprint. Licensed to a chemical company for fine chemical synthesis, demonstrating 25% yield improvement in pilot-scale reactions.
+The arc flow inverter design improves mixing efficiency compared to straight channels while maintaining compact footprint. 

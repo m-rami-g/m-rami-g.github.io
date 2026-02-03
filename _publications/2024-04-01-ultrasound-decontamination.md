@@ -15,4 +15,4 @@ First-principles model developed to simulate ultrasound-enhanced hydrogen peroxi
 
 ## Impact
 
-Technology adopted by two major pharmaceutical companies for sterile manufacturing. Reduces decontamination cycle time by 60% while maintaining 6-log reduction of microbial contaminants, saving approximately $500,000 annually per facility in operational costs.
+Technology adopted by two major pharmaceutical companies for sterile manufacturing.
