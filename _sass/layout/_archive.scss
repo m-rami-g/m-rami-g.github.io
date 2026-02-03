@@ -1,0 +1,384 @@
+/* ==========================================================================
+   ARCHIVE
+   ========================================================================== */
+
+.archive {
+  margin-bottom: 2em;
+
+  @include breakpoint($medium) {
+    @include span(12 of 12);
+  }
+
+  @include breakpoint($large) {
+    @include span(10 of 12 last);
+    @include prefix(0.5 of 12);
+  }
+  
+  // Override Susy grid with fixed spacing when sidebar is fixed
+  @media screen and (min-width: 1024px) {
+    width: auto;
+    float: none;
+    margin: 0 0 2em 23.5%; // Match sidebar width (3 columns out of 12 with gutters) + keep bottom margin
+    padding: 0 2rem 0 0; // Add some right padding
+    
+    // Ensure flex children work with the spacing
+    .blog-grid {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: underline;
+
+      img {
+        box-shadow: 0 0 10px rgba(#000, 0.25);
+      }
+    }
+  }
+}
+
+.archive__subtitle {
+  margin: 1.414em 0 0;
+  padding-bottom: 0.5em;
+  font-size: $type-size-5;
+  color: var(--global-text-color-light);
+  border-bottom: 1px solid var(--global-border-color);
+
+  + .list__item .archive__item-title {
+    margin-top: 0.5em;
+  }
+}
+
+.archive__item-title {
+  margin-bottom: 0.25em;
+  font-family: $sans-serif-narrow;
+
+  a + a {
+    opacity: 0.5;
+  }
+}
+
+/* remove border*/
+.page__content {
+
+  .archive__item-title {
+    margin-top: 1em;
+    border-bottom: none;
+  }
+}
+
+.archive__item-excerpt {
+  margin-top: 0;
+  font-size: $type-size-6;
+
+  & + p {
+    text-indent: 0;
+  }
+}
+
+.archive__item-teaser {
+  border-radius: $border-radius;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
+
+.archive__item:hover {
+  .archive__item-teaser {
+    box-shadow: 0 0 10px rgba(#000, 0.25);
+  }
+
+  .archive__item-title {
+    text-decoration: underline;
+  }
+}
+
+
+/*
+   List view
+   ========================================================================== */
+
+.list__item {
+  @include breakpoint($medium) {
+    padding-right: $right-sidebar-width-narrow;
+  }
+
+  @include breakpoint($large) {
+    padding-right: $right-sidebar-width;
+  }
+
+  @include breakpoint($x-large) {
+    padding-right: $right-sidebar-width-wide;
+  }
+
+  .page__meta {
+    margin: 0 0 4px;
+  }
+}
+
+
+/*
+   Grid view
+   ========================================================================== */
+
+.grid__item {
+  margin-bottom: 2em; /* Increased margin for better spacing */
+  padding: 1.5em; /* Increased padding for larger cards */
+  background-color: var(--global-bg-color);
+  border: 1px solid var(--global-border-color);
+  border-radius: 6px; /* Slightly larger border radius */
+  transition: all 0.2s ease-in-out;
+  height: 100%; /* Make cards fill available height */
+  display: flex;
+  flex-direction: column;
+  min-height: 350px; /* Minimum card height for consistency */
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+  }
+
+  .page__meta {
+    margin: 0 0 8px; /* Increased margin */
+    font-size: $type-size-7; /* Slightly larger meta text */
+    color: var(--global-text-color-light);
+  }
+
+  .archive__item-title {
+    margin-top: 0.5em; /* Increased margin */
+    margin-bottom: 0.5em; /* Increased margin */
+    font-size: $type-size-5; /* Larger title font */
+    line-height: 1.3;
+    font-weight: 600;
+    flex-grow: 1; /* Allow title to take available space */
+    
+    /* Limit title to 3 lines maximum */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .archive__item-excerpt {
+    display: none; /* Always hide excerpt */
+  }
+
+  .archive__item-teaser {
+    width: 100%;
+    height: 180px; /* Fixed height for all images */
+    object-fit: cover; /* Crop images to fit dimensions */
+    border-radius: 4px;
+    margin-bottom: 1em;
+    display: block;
+  }
+
+  @include breakpoint($small) {
+    @include gallery(6 of 12); /* 2 columns on small screens */
+    min-height: 320px; /* Slightly smaller on mobile */
+    
+    .archive__item-teaser {
+      height: 150px; /* Slightly smaller on mobile */
+    }
+  }
+
+  @include breakpoint($medium) {
+    margin-left: 0;
+    margin-right: 0;
+    @include gallery(6 of 12); /* 2 columns on medium screens */
+    padding: 1.5em;
+    min-height: 350px;
+    
+    .archive__item-teaser {
+      height: 180px;
+    }
+  }
+
+  @include breakpoint($large) {
+    @include gallery(6 of 12); /* Maintain 2 columns on large screens */
+    padding: 1.5em;
+    min-height: 380px; /* Taller on large screens */
+    
+    .archive__item-teaser {
+      height: 200px; /* Taller images on large screens */
+    }
+  }
+}
+
+
+/*
+   Features
+   ========================================================================== */
+
+.feature__wrapper {
+  @include clearfix();
+  margin-bottom: 2em;
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+.feature__item {
+  margin-bottom: 2em;
+  font-size: 1.25rem;
+
+  @include breakpoint($small) {
+    margin-bottom: 0;
+    @include gallery(4 of 12);
+
+    .feature__item-teaser {
+      max-height: 200px;
+      overflow: hidden;
+    }
+  }
+
+  &--left {
+    @include full();
+    font-size: 1.25rem;
+
+    .archive__item-teaser {
+      margin-bottom: 2em;
+    }
+
+    @include breakpoint($small) {
+      .archive__item-teaser {
+        @include span(5 of 12);
+      }
+
+      .archive__item-body {
+        @include span(7 of 12 last);
+        @include prefix(0.5 of 12);
+        @include suffix(1 of 12);
+      }
+    }
+  }
+
+  &--right {
+    @include full();
+    font-size: 1.25rem;
+
+    .archive__item-teaser {
+      margin-bottom: 2em;
+    }
+
+    @include breakpoint($small) {
+      text-align: right;
+
+      .archive__item-teaser {
+        @include span(5 of 12 rtl);
+      }
+
+      .archive__item-body {
+        @include span(7 of 12 last rtl);
+        @include prefix(0.5 of 12);
+        @include suffix(1 of 12);
+      }
+    }
+  }
+
+  &--center {
+    @include full();
+    font-size: 1.25rem;
+
+    .archive__item-teaser {
+      margin-bottom: 2em;
+    }
+
+    @include breakpoint($small) {
+      text-align: center;
+
+      .archive__item-teaser {
+        margin: 0 auto;
+        width: span(5 of 12);
+      }
+
+      .archive__item-body {
+        margin: 0 auto;
+        width: span(7 of 12);
+      }
+    }
+  }
+}
+
+/* Blog grid spacing */
+.blog-grid {
+  margin-top: 2.5em; /* Add space below page title */
+  
+  @include breakpoint($medium) {
+    margin-top: 3em; /* More space on larger screens */
+  }
+}
+
+/* Completely hide excerpts on blog page */
+.blog-grid .archive__item-excerpt {
+  display: none !important;
+}
+
+/* Ensure grid items align properly */
+.blog-grid .grid__item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Clear floats for grid wrapper */
+.grid__wrapper {
+  @include clearfix;
+}
+
+/* Video and iframe styling for teasers */
+.archive__item-teaser video,
+.archive__item-teaser iframe {
+  width: 100%;
+  height: 180px; /* Match image height */
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+  
+  @include breakpoint($small) {
+    height: 150px;
+  }
+  
+  @include breakpoint($medium) {
+    height: 180px;
+  }
+  
+  @include breakpoint($large) {
+    height: 200px;
+  }
+}
+
+/* ==========================================================================
+   PUBLICATION KEYWORDS
+   ========================================================================== */
+
+.publication-keywords {
+  margin: 1.5em 0;
+  padding: 0.5em 0;
+  border-top: 1px solid var(--global-border-color);
+  border-bottom: 1px solid var(--global-border-color);
+  font-size: 0.9em;
+  
+  strong {
+    margin-right: 0.5em;
+    color: var(--global-text-color);
+  }
+}
+
+.keyword-badge {
+  display: inline-block;
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-border-color);
+  padding: 0.2em 0.6em;
+  margin: 0.2em;
+  border-radius: 3px;
+  font-size: 0.85em;
+  color: var(--global-text-color-light);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: var(--global-border-color);
+    color: var(--global-text-color);
+  }
+}

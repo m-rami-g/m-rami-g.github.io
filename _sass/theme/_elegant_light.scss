@@ -1,0 +1,134 @@
+/* ==========================================================================
+   ELEGANT LIGHT THEME
+   ========================================================================== */
+
+/* Modern color palette - sophisticated, muted tones */
+$primary-color              : #2C3E50;    // Deep navy blue
+$secondary-color            : #3498DB;    // Bright blue accent
+$accent-color               : #9B59B6;    // Elegant purple
+$success-color              : #27AE60;    // Fresh green
+$warning-color              : #F39C12;    // Warm orange
+$danger-color               : #E74C3C;    // Soft red
+
+/* Color codes used for the site (compatibility) */
+$info-color                 : #3498DB;    // Blue for info
+$notice-color               : #7a8288;    // Gray for notices
+
+/* Neutral tones for elegant design */
+$gray-900                   : #1A1A1A;    // Near black
+$gray-800                   : #2D2D2D;    // Dark gray
+$gray-700                   : #4A4A4A;    // Medium dark gray
+$gray-600                   : #6B6B6B;    // Medium gray
+$gray-500                   : #8C8C8C;    // Gray
+$gray-400                   : #B0B0B0;    // Light gray
+$gray-300                   : #D1D1D1;    // Lighter gray
+$gray-200                   : #E8E8E8;    // Very light gray
+$gray-100                   : #F5F5F5;    // Off white
+$gray-50                    : #FAFAFA;    // Pure white
+
+/* Modern design tokens */
+$masthead-height            : 80px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 300px;
+$sidebar-screen-min-width   : 1024px;
+
+$border-radius              : 8px;
+$border-radius-sm           : 4px;
+$border-radius-md           : 8px;
+$border-radius-lg           : 12px;
+$border-radius-xl           : 16px;
+$border-radius-full         : 9999px;
+
+$box-shadow                 : 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$global-transition          : all 0.25s ease-in-out;
+
+$shadow-sm                  : 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md                  : 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg                  : 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl                  : 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+$transition-fast            : 150ms ease-in-out;
+$transition-base            : 250ms ease-in-out;
+$transition-slow            : 350ms ease-in-out;
+
+/* Elegant light theme for the site */
+:root {
+    /* Base colors */
+    --global-base-color                 : #{$gray-700};
+    --global-bg-color                   : #{$gray-50};
+    --global-footer-bg-color            : #{$gray-100};
+    --global-border-color               : #{$gray-200};
+    --global-dark-border-color          : #{$gray-300};
+    --global-code-background-color      : #{$gray-100};
+    --global-code-text-color            : #{$gray-800};
+    --global-fig-caption-color          : #{$gray-600};
+    
+    /* Link colors */
+    --global-link-color                 : #{$secondary-color};
+    --global-link-color-hover           : #{darken($secondary-color, 15%)};
+    --global-link-color-visited         : #{$accent-color};
+    
+    /* Text colors */
+    --global-text-color                 : #{$gray-800};
+    --global-text-color-light           : #{$gray-600};
+    --global-text-color-lighter         : #{$gray-500};
+    
+    /* Masthead colors */
+    --global-masthead-bg-color          : #{$gray-50};
+    --global-masthead-link-color        : #{$gray-800};
+    --global-masthead-link-color-hover  : #{$secondary-color};
+    --global-masthead-border-color      : #{$gray-200};
+    
+    /* Sidebar/author profile */
+    --global-sidebar-bg-color           : #{$gray-100};
+    --global-sidebar-border-color       : #{$gray-200};
+    --global-sidebar-text-color         : #{$gray-700};
+    
+    /* Table colors */
+    --global-thead-color                : #{$gray-100};
+    --global-table-border-color         : #{$gray-200};
+    
+    /* Button colors */
+    --global-btn-bg-color               : #{$secondary-color};
+    --global-btn-text-color             : white;
+    --global-btn-bg-color-hover         : #{darken($secondary-color, 10%)};
+    
+    /* Card/box colors */
+    --global-card-bg-color              : white;
+    --global-card-border-color          : #{$gray-200};
+    --global-card-shadow                : #{$shadow-md};
+    
+    /* Success/error colors */
+    --global-success-color              : #{$success-color};
+    --global-warning-color              : #{$warning-color};
+    --global-danger-color               : #{$danger-color};
+    --global-info-color                 : #{$secondary-color};
+    
+    /* Typography */
+    --global-font-family                : #{$modern-sans-serif};
+    --global-heading-font-family        : #{$modern-sans-serif};
+    --global-code-font-family           : #{$modern-mono};
+    
+    /* Spacing */
+    --global-spacing-unit               : 1rem;
+    --global-spacing-sm                 : 0.5rem;
+    --global-spacing-md                 : 1.5rem;
+    --global-spacing-lg                 : 2rem;
+    --global-spacing-xl                 : 3rem;
+    
+    /* Border radius */
+    --global-border-radius-sm           : #{$border-radius-sm};
+    --global-border-radius-md           : #{$border-radius-md};
+    --global-border-radius-lg           : #{$border-radius-lg};
+    
+    /* Shadows */
+    --global-shadow-sm                  : #{$shadow-sm};
+    --global-shadow-md                  : #{$shadow-md};
+    --global-shadow-lg                  : #{$shadow-lg};
+    
+    /* Transitions */
+    --global-transition-fast            : #{$transition-fast};
+    --global-transition-base            : #{$transition-base};
+    --global-transition-slow            : #{$transition-slow};
+}

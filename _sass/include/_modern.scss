@@ -1,0 +1,310 @@
+/* ==========================================================================
+   MODERN STYLES
+   ========================================================================== */
+
+/* Modern container with better spacing */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--global-spacing-md);
+  
+  @include breakpoint($medium) {
+    padding: 0 var(--global-spacing-lg);
+  }
+  
+  @include breakpoint($large) {
+    padding: 0 var(--global-spacing-xl);
+  }
+}
+
+/* Modern card styling */
+.card {
+  background-color: var(--global-card-bg-color);
+  border: 1px solid var(--global-card-border-color);
+  border-radius: var(--global-border-radius-lg);
+  box-shadow: var(--global-card-shadow);
+  padding: var(--global-spacing-lg);
+  transition: all var(--global-transition-base);
+  
+  &:hover {
+    box-shadow: var(--global-shadow-lg);
+    transform: translateY(-2px);
+  }
+  
+  &--flat {
+    box-shadow: none;
+    border: 1px solid var(--global-border-color);
+    
+    &:hover {
+      box-shadow: var(--global-shadow-sm);
+      transform: none;
+    }
+  }
+}
+
+/* Modern button enhancements */
+.btn {
+  border-radius: var(--global-border-radius-md);
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all var(--global-transition-base);
+  border: none;
+  cursor: pointer;
+  
+  &--primary {
+    background-color: var(--global-btn-bg-color);
+    color: var(--global-btn-text-color);
+    
+    &:hover {
+      background-color: var(--global-btn-bg-color-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--global-shadow-md);
+    }
+  }
+  
+  &--outline {
+    background-color: transparent;
+    border: 2px solid var(--global-border-color);
+    color: var(--global-text-color);
+    
+    &:hover {
+      border-color: var(--global-link-color);
+      color: var(--global-link-color);
+      background-color: rgba(var(--global-link-color-rgb), 0.05);
+    }
+  }
+  
+  &--pill {
+    border-radius: var(--global-border-radius-full);
+  }
+}
+
+/* Modern typography enhancements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--global-heading-font-family);
+  font-weight: 600;
+  line-height: var(--global-line-height-heading);
+  margin-bottom: var(--global-spacing-md);
+  color: var(--global-text-color);
+}
+
+h1 {
+  font-size: var(--global-type-size-1);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--global-type-size-2);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: var(--global-type-size-3);
+  font-weight: 600;
+}
+
+p {
+  line-height: var(--global-line-height-base);
+  margin-bottom: var(--global-spacing-md);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Modern link styling */
+a {
+  color: var(--global-link-color);
+  text-decoration: none;
+  transition: color var(--global-transition-fast);
+  position: relative;
+  
+  &:hover {
+    color: var(--global-link-color-hover);
+    
+    &::after {
+      width: 100%;
+    }
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--global-link-color);
+    transition: width var(--global-transition-base);
+  }
+  
+  &.no-underline::after {
+    display: none;
+  }
+}
+
+/* Modern list styling */
+ul, ol {
+  margin-bottom: var(--global-spacing-md);
+  padding-left: var(--global-spacing-lg);
+  
+  li {
+    margin-bottom: var(--global-spacing-sm);
+    line-height: var(--global-line-height-base);
+  }
+}
+
+/* Modern code block styling */
+code, pre {
+  font-family: var(--global-code-font-family);
+  font-size: 0.9em;
+  line-height: var(--global-line-height-code);
+}
+
+pre {
+  background-color: var(--global-code-background-color);
+  border-radius: var(--global-border-radius-md);
+  padding: var(--global-spacing-md);
+  overflow-x: auto;
+  border: 1px solid var(--global-border-color);
+}
+
+code {
+  background-color: var(--global-code-background-color);
+  padding: 0.2em 0.4em;
+  border-radius: var(--global-border-radius-sm);
+  color: var(--global-code-text-color);
+}
+
+/* Modern table styling */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--global-border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--global-shadow-sm);
+  
+  thead {
+    background-color: var(--global-thead-color);
+    
+    th {
+      padding: var(--global-spacing-md);
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid var(--global-table-border-color);
+    }
+  }
+  
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: rgba(var(--global-border-color-rgb), 0.1);
+      }
+      
+      &:hover {
+        background-color: rgba(var(--global-link-color-rgb), 0.05);
+      }
+      
+      td {
+        padding: var(--global-spacing-md);
+        border-bottom: 1px solid var(--global-table-border-color);
+      }
+    }
+  }
+}
+
+/* Modern form elements */
+input, textarea, select {
+  font-family: var(--global-font-family);
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--global-border-color);
+  border-radius: var(--global-border-radius-md);
+  background-color: var(--global-bg-color);
+  color: var(--global-text-color);
+  transition: all var(--global-transition-fast);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--global-link-color);
+    box-shadow: 0 0 0 3px rgba(var(--global-link-color-rgb), 0.1);
+  }
+  
+  &::placeholder {
+    color: var(--global-text-color-light);
+  }
+}
+
+/* Modern utility classes */
+.text-gradient {
+  background: linear-gradient(135deg, var(--global-link-color), var(--global-accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-hover {
+  transition: box-shadow var(--global-transition-base);
+  
+  &:hover {
+    box-shadow: var(--global-shadow-lg);
+  }
+}
+
+.scale-hover {
+  transition: transform var(--global-transition-base);
+  
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.fade-in {
+  animation: fadeIn var(--global-transition-slow);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modern grid system */
+.grid {
+  display: grid;
+  gap: var(--global-spacing-lg);
+  
+  &--2 {
+    @include breakpoint($medium) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  &--3 {
+    @include breakpoint($medium) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include breakpoint($large) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &--4 {
+    @include breakpoint($medium) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include breakpoint($large) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

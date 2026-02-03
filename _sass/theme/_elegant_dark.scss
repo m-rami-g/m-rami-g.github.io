@@ -1,0 +1,82 @@
+/* ==========================================================================
+   ELEGANT DARK THEME
+   ========================================================================== */
+
+/* Dark theme color palette */
+$primary-color-dark         : #3498DB;    // Bright blue for dark mode
+$secondary-color-dark       : #9B59B6;    // Purple accent
+$accent-color-dark          : #1ABC9C;    // Teal accent
+
+/* Dark neutral tones */
+$gray-900-dark              : #0A0A0A;    // Near black
+$gray-800-dark              : #1A1A1A;    // Very dark gray
+$gray-700-dark              : #2D2D2D;    // Dark gray
+$gray-600-dark              : #404040;    // Medium dark gray
+$gray-500-dark              : #5C5C5C;    // Medium gray
+$gray-400-dark              : #787878;    // Light gray
+$gray-300-dark              : #949494;    // Lighter gray
+$gray-200-dark              : #B0B0B0;    // Very light gray
+$gray-100-dark              : #CCCCCC;    // Off white
+$gray-50-dark               : #E8E8E8;    // Near white
+
+/* Masthead height for dark theme */
+$masthead-height            : 80px;
+
+/* Elegant dark theme for the site */
+[data-theme="dark"] {
+    /* Base colors */
+    --global-base-color                 : #{$gray-300-dark};
+    --global-bg-color                   : #{$gray-900-dark};
+    --global-footer-bg-color            : #{$gray-800-dark};
+    --global-border-color               : #{$gray-700-dark};
+    --global-dark-border-color          : #{$gray-600-dark};
+    --global-code-background-color      : #{$gray-800-dark};
+    --global-code-text-color            : #{$gray-200-dark};
+    --global-fig-caption-color          : #{$gray-400-dark};
+    
+    /* Link colors */
+    --global-link-color                 : #{$primary-color-dark};
+    --global-link-color-hover           : #{lighten($primary-color-dark, 15%)};
+    --global-link-color-visited         : #{$secondary-color-dark};
+    
+    /* Text colors */
+    --global-text-color                 : #{$gray-200-dark};
+    --global-text-color-light           : #{$gray-300-dark};
+    --global-text-color-lighter         : #{$gray-400-dark};
+    
+    /* Masthead colors */
+    --global-masthead-bg-color          : #{$gray-800-dark};
+    --global-masthead-link-color        : #{$gray-200-dark};
+    --global-masthead-link-color-hover  : #{$primary-color-dark};
+    --global-masthead-border-color      : #{$gray-700-dark};
+    
+    /* Sidebar/author profile */
+    --global-sidebar-bg-color           : #{$gray-800-dark};
+    --global-sidebar-border-color       : #{$gray-700-dark};
+    --global-sidebar-text-color         : #{$gray-300-dark};
+    
+    /* Table colors */
+    --global-thead-color                : #{$gray-700-dark};
+    --global-table-border-color         : #{$gray-600-dark};
+    
+    /* Button colors */
+    --global-btn-bg-color               : #{$primary-color-dark};
+    --global-btn-text-color             : white;
+    --global-btn-bg-color-hover         : #{lighten($primary-color-dark, 10%)};
+    
+    /* Card/box colors */
+    --global-card-bg-color              : #{$gray-800-dark};
+    --global-card-border-color          : #{$gray-700-dark};
+    --global-card-shadow                : 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    
+    /* Success/error colors */
+    --global-success-color              : #27AE60;
+    --global-warning-color              : #F39C12;
+    --global-danger-color               : #E74C3C;
+    --global-info-color                 : #{$primary-color-dark};
+    
+    /* Shadows are more subtle in dark mode */
+    --global-shadow-sm                  : 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --global-shadow-md                  : 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --global-shadow-lg                  : 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}

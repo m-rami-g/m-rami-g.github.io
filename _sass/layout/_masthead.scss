@@ -1,0 +1,61 @@
+/* ==========================================================================
+   MASTHEAD
+   ========================================================================== */
+
+.masthead {
+  position: fixed;
+  background: var(--global-masthead-bg-color);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  height: fit-content;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid var(--global-masthead-border-color);
+  box-shadow: var(--global-shadow-sm);
+
+  -webkit-animation: intro 0.3s both;
+          animation: intro 0.3s both;
+  -webkit-animation-delay: 0.15s;
+          animation-delay: 0.15s;
+  z-index: 100;
+
+  &__inner-wrap {
+    @include container;
+    @include clearfix;
+    padding: 1rem 1.5rem;
+    font-family: var(--global-font-family);
+    max-width: 1200px;
+    margin: 0 auto;
+
+    nav {
+      z-index: 10;
+    }
+
+    a {
+      text-decoration: none;
+      transition: color var(--global-transition-fast);
+    }
+  }
+}
+
+.masthead__menu {
+
+  ul {
+    margin: 0;
+    padding: 0;
+    clear: both;
+    list-style-type: none;
+  }
+}
+
+.masthead__menu-item {
+  background-color: var(--global-bg-color);
+  display: block;
+  list-style-type: none;
+  white-space: nowrap;
+
+  &--lg {
+    padding-right: 2em;
+    font-weight: 700;
+  }
+}
