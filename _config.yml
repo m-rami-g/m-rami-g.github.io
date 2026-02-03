@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : 
 site_theme               : "air" # Currently available options are "default", "air"
-title                    : "Personal website"
+title                    : "Top"
 title_separator          : "-"
 name                     : &name "Mohamed Rami Gaddem"
 description              : &description   # Update this with a general description of your site, this is the default if not overridden by a page
