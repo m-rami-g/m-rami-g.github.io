@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Mohamed Rami Gaddem"
+title: ""
 author_profile: true
 redirect_from: 
   - /about/
