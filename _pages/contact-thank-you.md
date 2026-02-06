@@ -22,7 +22,7 @@ Your message has been received successfully. I will respond to your inquiry as s
 You might find these resources helpful:
 
 - [Publications](/publications/) - My latest research papers
-- [Blog](/blog/) - Blog posts and articles
+
 - [Google Scholar](https://scholar.google.com/citations?user=Um9On7kAAAAJ&hl=en&oi=ao) - Complete publication list
 
 ## Privacy Notice

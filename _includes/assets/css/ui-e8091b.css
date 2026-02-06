@@ -1,0 +1,83 @@
+/* UI Enhancement Styles - Analytics Display */
+
+.analytics-panel {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.metric-display {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+}
+
+.metric-item {
+    text-align: center;
+    padding: 10px;
+}
+
+.metric-value {
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+}
+
+.metric-label {
+    font-size: 12px;
+    opacity: 0.8;
+    text-transform: uppercase;
+}
+
+.ui-enhance {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ui-enhance:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ui-enhance:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.contact-reveal-panel {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    display: none;
+}
+
+.contact-info {
+    font-family: 'Courier New', monospace;
+    background: #e9ecef;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #495057;
+    margin-right: 10px;
+}

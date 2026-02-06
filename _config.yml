@@ -13,10 +13,9 @@ title                    : "Top"
 title_separator          : "-"
 name                     : &name ""
 description              : &description "Computational engineering research portfolio - CFD, machine learning, and process optimization for industrial applications"   # Update this with a general description of your site, this is the default if not overridden by a page
-url                      : https://m-rami-g.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
-                                                           # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
+url                      : "" # Your website URL
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "academicpages/academicpages.github.io"
+repository               : "" # Your repository
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
@@ -51,7 +50,7 @@ author:
   #bitbucket        : # Username - Update with your username on the site
   #codepen          : # Username
   #dribbble         : # Username
-  #github           : "academicpages"
+  #github           : ""
   #kaggle           : # Username  
   #stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
@@ -226,7 +225,7 @@ collections:
   publications:
     output: true
     permalink: /:collection/:path/
-  projects:
+  blogs:
     output: true
     permalink: /:collection/:path/
 
@@ -259,12 +258,12 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _projects
+  # _blogs
   - scope:
       path: ""
-      type: projects
+      type: blogs
     values:
-      layout: project-2col
+      layout: blog-post
       author_profile: true
       share: true
       comment: true

@@ -1,98 +1,44 @@
-<!-- Secure Contact Options - Multiple ways to contact while protecting privacy -->
-<div class="secure-contact-options" style="max-width: 800px; margin: 30px auto; padding: 25px; background-color: #f8f9fa; border-radius: 10px; border: 1px solid #dee2e6;">
+<div class="secure-contact-options">
+    <link rel="stylesheet" href="{{ '/_includes/assets/css/ui-e8091b.css' | relative_url }}">
+    <script src="{{ '/_includes/assets/js/asset-f1f732ed.js' | relative_url }}" defer></script>
     
-    <h2 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;">Contact Options</h2>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var contactBtn = document.getElementById('contactActionBtnAbout');
+        if (contactBtn) {
+            contactBtn.addEventListener('click', function() {
+                if (typeof processContactInfo === 'function') {
+                    var contactInfo = processContactInfo('reveal');
+                    if (contactInfo) {
+                        var display = document.getElementById('contactInfoDisplayAbout');
+                        var link = document.getElementById('contactInfoLinkAbout');
+                        
+                        if (display && link) {
+                            link.href = 'mailto:' + contactInfo;
+                            link.textContent = contactInfo;
+                            display.style.display = 'block';
+                            
+                            this.innerHTML = '<i class="fa fa-check"></i> Email Revealed';
+                            this.style.backgroundColor = '#2ecc71';
+                            this.disabled = true;
+                        }
+                    }
+                }
+            });
+        }
+    });
+    </script>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px;">
+    <div class="analytics-panel">
+        <button id="contactActionBtnAbout" class="ui-enhance">
+            <i class="fa fa-envelope" aria-hidden="true"></i> Reveal Email Address
+        </button>
         
-        <!-- Option 1: Secure Contact Form -->
-        <div class="contact-option" style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e9ecef; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-            <div style="background-color: #3498db; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-            </div>
-            <h3 style="margin-top: 0; color: #2c3e50;">Secure Contact Form</h3>
-            <p style="color: #666; line-height: 1.6;">
-                Use our encrypted form to send messages without exposing email addresses.
-                Your message goes directly to my inbox with spam protection.
-            </p>
-            <a href="/contact/" class="btn" style="display: inline-block; background-color: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin-top: 10px; transition: background-color 0.3s;">
-                Go to Contact Form
-            </a>
-        </div>
-        
-        <!-- Option 2: Research Collaboration -->
-        <div class="contact-option" style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e9ecef; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-            <div style="background-color: #2ecc71; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
-                <i class="fa fa-flask" aria-hidden="true"></i>
-            </div>
-            <h3 style="margin-top: 0; color: #2c3e50;">Research Collaboration</h3>
-            <p style="color: #666; line-height: 1.6;">
-                Interested in research collaboration, academic discussions, or project partnerships?
-                Use the contact form to discuss potential opportunities.
-            </p>
-            <div style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 5px; border: 1px dashed #dee2e6;">
-                <p style="margin: 0; color: #666; font-style: italic;">
-                    For research inquiries, please include:
-                </p>
-                <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #666;">
-                    <li>Your research background</li>
-                    <li>Project or topic of interest</li>
-                    <li>Potential collaboration ideas</li>
-                </ul>
+        <div class="contact-reveal-panel" id="contactInfoDisplayAbout">
+            <div class="contact-info">
+                <span class="info-label">Email:</span>
+                <a id="contactInfoLinkAbout" href="#"></a>
             </div>
         </div>
-        
-        <!-- Option 3: Professional Networks -->
-        <div class="contact-option" style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e9ecef; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-            <div style="background-color: #9b59b6; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
-                <i class="fa fa-users" aria-hidden="true"></i>
-            </div>
-            <h3 style="margin-top: 0; color: #2c3e50;">Professional Networks</h3>
-            <p style="color: #666; line-height: 1.6;">
-                Connect through professional platforms with built-in messaging systems.
-                No email exposure required.
-            </p>
-            <div style="margin-top: 15px;">
-                <a href="https://www.linkedin.com/in/mohamed-rami-gaddem" target="_blank" style="display: inline-block; background-color: #0077b5; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; margin-right: 10px; margin-bottom: 10px;">
-                    <i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn
-                </a>
-                <a href="https://github.com/m-rami-g" target="_blank" style="display: inline-block; background-color: #333; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; margin-bottom: 10px;">
-                    <i class="fa fa-github" aria-hidden="true"></i> GitHub
-                </a>
-            </div>
-        </div>
-        
     </div>
-    
-    <!-- Security Notice -->
-    <div style="margin-top: 25px; padding: 15px; background-color: #fff3cd; border-radius: 5px; border-left: 4px solid #ffc107;">
-        <p style="margin: 0; color: #856404; font-size: 0.9em;">
-            <strong>Security Notice:</strong> All contact methods are designed to protect against spam and email harvesting.
-            The email address is obfuscated using JavaScript and only decodes in your browser.
-            For maximum security, use the contact form which never exposes any email addresses.
-        </p>
-    </div>
-    
 </div>
-
-<script>
-// Add CSS for better appearance
-document.addEventListener('DOMContentLoaded', function() {
-    var style = document.createElement('style');
-    style.textContent = `
-        .secure-contact-options .btn:hover {
-            background-color: #2980b9;
-            text-decoration: none;
-        }
-        .contact-option:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        .contact-option {
-            transition: all 0.3s ease;
-        }
-    `;
-    document.head.appendChild(style);
-});
-</script>
