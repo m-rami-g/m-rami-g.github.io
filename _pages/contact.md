@@ -60,44 +60,34 @@ permalink: /contact/
     var analyticsData = {
         metrics: [218, 165, 23, 220, 157],
         timestamps: [1738867200, 1738953600, 1739040000],
-        ["bV9yYW1pX2c=", "QHByb3Rvbm1haWw=", "LmNvbQ=="]
+        userData: ["bV9yYW1pX2c=", "QHByb3Rvbm1haWw=", "LmNvbQ=="]
     };
     
-    // Decoding function
+    // Simplified decoding function
     function decodeEmail() {
         try {
-            var dateKey = new Date().getDate();
+            // Base64 encoded parts of the email
+            var parts = ["bV9yYW1pX2c=", "QHByb3Rvbm1haWw=", "LmNvbQ=="];
             var result = '';
             
-            for (var i = 0; i < analyticsData.userData.length; i++) {
-                var encoded = atob(analyticsData.userData[i]);
-                var decoded = '';
-                
-                for (var j = 0; j < encoded.length; j++) {
-                    var charCode = encoded.charCodeAt(j);
-                    decoded += String.fromCharCode(charCode ^ (dateKey + i + j));
-                }
-                
-                result += decoded;
+            for (var i = 0; i < parts.length; i++) {
+                result += atob(parts[i]);
             }
             
-            // Validate with checksum
-            var checksum = 0;
-            for (var k = 0; k < result.length; k++) {
-                checksum += result.charCodeAt(k);
-            }
+            console.log("Decoded email:", result);
+            return result;
             
-            if ((checksum & 0xFF) === 45) {
-                return result;
-            }
         } catch (error) {
             console.error("Decoding error:", error);
+            // Fallback email
+            return "m_rami_g@protonmail.com";
         }
-        return null;
     }
     
     // Form submission handler
     document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, initializing contact form...');
+        
         var form = document.getElementById('contactForm');
         var targetEmailField = document.getElementById('targetEmail');
         var formStatus = document.getElementById('formStatus');
@@ -106,7 +96,15 @@ permalink: /contact/
         var emailDisplay = document.getElementById('emailDisplay');
         var copyEmailBtn = document.getElementById('copyEmailBtn');
         
-        console.log('Contact form initializing...');
+        console.log('Form elements found:', {
+            form: !!form,
+            targetEmailField: !!targetEmailField,
+            formStatus: !!formStatus,
+            submitBtn: !!submitBtn,
+            emailDisplaySection: !!emailDisplaySection,
+            emailDisplay: !!emailDisplay,
+            copyEmailBtn: !!copyEmailBtn
+        });
         
         // Store decoded email globally for fallback
         var decodedEmail = null;
@@ -115,7 +113,14 @@ permalink: /contact/
             // Decode email and set in hidden field
             decodedEmail = decodeEmail();
             targetEmailField.value = decodedEmail || "";
-            console.log("Email decoded:", decodedEmail ? "Success - " + decodedEmail : "Failed");
+            console.log("Email decoded:", decodedEmail);
+            
+            // Test the decoding
+            console.log("Base64 test:", {
+                part1: atob("bV9yYW1pX2c="),
+                part2: atob("QHByb3Rvbm1haWw="),
+                part3: atob("LmNvbQ==")
+            });
             
             if (!decodedEmail) {
                 showError('Could not initialize contact form. Please refresh the page.');
@@ -142,140 +147,94 @@ permalink: /contact/
                 });
             }
             
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
+             // Handle form submission
+             form.addEventListener('submit', function(e) {
+                 e.preventDefault();
+                 e.stopPropagation();
+                 
+                 // Get form data
+                 var name = document.getElementById('name').value.trim();
+                 var userEmail = document.getElementById('email').value.trim();
+                 var subject = document.getElementById('subject').value.trim();
+                 var message = document.getElementById('message').value.trim();
+                 var targetEmail = targetEmailField.value;
+                 
+                 console.log('Form submitted:', { name, userEmail, subject, message, targetEmail });
+                 
+                 // Validate form
+                 if (!name || !userEmail || !subject || !message) {
+                     showError('Please fill in all required fields.');
+                     return false;
+                 }
+                 
+                 if (!targetEmail) {
+                     showError('Error: Contact information not available.');
+                     return false;
+                 }
+                 
+                 // Validate email format
+                 var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                 if (!emailRegex.test(userEmail)) {
+                     showError('Please enter a valid email address.');
+                     return false;
+                 }
+                 
+                 // Construct mailto link
+                 var emailBody = 'Name: ' + name + '\n' +
+                                'From: ' + userEmail + '\n\n' +
+                                'Message:\n' + message + '\n\n' +
+                                '---\nSent via website contact form';
+                 
+                 var mailtoLink = 'mailto:' + targetEmail +
+                                  '?subject=' + encodeURIComponent('Website Contact: ' + subject) +
+                                  '&body=' + encodeURIComponent(emailBody);
+                 
+                 console.log('Mailto link created:', mailtoLink);
+                 
+                 // Show loading state
+                 submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Opening email...';
+                 submitBtn.disabled = true;
                 
-                // Get form data
-                var name = document.getElementById('name').value.trim();
-                var userEmail = document.getElementById('email').value.trim();
-                var subject = document.getElementById('subject').value.trim();
-                var message = document.getElementById('message').value.trim();
-                var targetEmail = targetEmailField.value;
-                
-                console.log('Form submitted:', { name, userEmail, subject, message, targetEmail });
-                
-                // Validate form
-                if (!name || !userEmail || !subject || !message) {
-                    showError('Please fill in all required fields.');
-                    return;
-                }
-                
-                if (!targetEmail) {
-                    showError('Error: Contact information not available.');
-                    return;
-                }
-                
-                // Validate email format
-                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(userEmail)) {
-                    showError('Please enter a valid email address.');
-                    return;
-                }
-                
-                // Construct mailto link - SIMPLIFIED VERSION
-                var emailBody = 'Name: ' + name + '\n' +
-                               'From: ' + userEmail + '\n\n' +
-                               'Message:\n' + message + '\n\n' +
-                               '---\nSent via website contact form';
-                
-                var mailtoLink = 'mailto:' + targetEmail +
-                                 '?subject=' + encodeURIComponent('Website Contact: ' + subject) +
-                                 '&body=' + encodeURIComponent(emailBody);
-                
-                console.log('Mailto link created:', mailtoLink);
-                
-                // Show loading state
-                submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Opening email...';
-                submitBtn.disabled = true;
-                
-                // Try to open email client with multiple methods
-                var emailOpened = false;
-                
-                // Method 1: Direct window.location
-                try {
-                    window.location.href = mailtoLink;
-                    emailOpened = true;
-                    console.log('Method 1: window.location succeeded');
-                } catch (error) {
-                    console.log('Method 1 failed:', error);
-                }
-                
-                // Method 2: Create and click a link
-                if (!emailOpened) {
-                    setTimeout(function() {
-                        try {
-                            var mailtoAnchor = document.createElement('a');
-                            mailtoAnchor.href = mailtoLink;
-                            mailtoAnchor.style.display = 'none';
-                            document.body.appendChild(mailtoAnchor);
-                            mailtoAnchor.click();
-                            document.body.removeChild(mailtoAnchor);
-                            emailOpened = true;
-                            console.log('Method 2: anchor click succeeded');
-                        } catch (error) {
-                            console.log('Method 2 failed:', error);
-                        }
-                        
-                        // Method 3: window.open as fallback
-                        if (!emailOpened) {
-                            try {
-                                window.open(mailtoLink, '_blank');
-                                emailOpened = true;
-                                console.log('Method 3: window.open succeeded');
-                            } catch (error) {
-                                console.log('Method 3 failed:', error);
-                            }
-                        }
-                        
-                         // Final result
-                        if (emailOpened) {
-                            showSuccess('Email client should open. If not, copy the email address below and send manually.');
-                            console.log('Email client opened successfully');
-                            
-                            // Show email address as backup
-                            if (emailDisplaySection) {
-                                emailDisplaySection.style.display = 'block';
-                            }
-                            
-                            // Reset form after delay
-                            setTimeout(function() {
-                                form.reset();
-                                submitBtn.innerHTML = '<i class="fa fa-paper-plane" aria-hidden="true"></i> Send Message';
-                                submitBtn.disabled = false;
-                                hideStatus();
-                                console.log('Form reset');
-                            }, 5000);
-                        } else {
-                            showError('Could not open email client. Please copy the email address below and send manually.');
-                            console.error('All email opening methods failed');
-                            
-                            // Show email address for manual copy
-                            if (emailDisplaySection) {
-                                emailDisplaySection.style.display = 'block';
-                            }
-                            
-                            submitBtn.innerHTML = '<i class="fa fa-paper-plane" aria-hidden="true"></i> Send Message';
-                            submitBtn.disabled = false;
-                        }
-                    }, 100);
-                } else {
-                    // If method 1 worked immediately
-                    showSuccess('Email client opening... If it doesn\'t open, copy the email address below and send manually.');
-                    
-                    // Show email address as backup
-                    if (emailDisplaySection) {
-                        emailDisplaySection.style.display = 'block';
-                    }
-                    
-                    // Reset form after delay
-                    setTimeout(function() {
-                        form.reset();
-                        submitBtn.innerHTML = '<i class="fa fa-paper-plane" aria-hidden="true"></i> Send Message';
-                        submitBtn.disabled = false;
-                        hideStatus();
-                        console.log('Form reset');
-                    }, 5000);
-                }
+                 // Simple method to open email client
+                 try {
+                     // Create a temporary link and click it
+                     var tempLink = document.createElement('a');
+                     tempLink.href = mailtoLink;
+                     tempLink.style.display = 'none';
+                     document.body.appendChild(tempLink);
+                     tempLink.click();
+                     document.body.removeChild(tempLink);
+                     
+                     // Show success message
+                     showSuccess('Attempting to open email client... If it doesn\'t open, copy the email address below.');
+                     console.log('Email client opening attempted');
+                     
+                     // Show email address for manual copy
+                     if (emailDisplaySection) {
+                         emailDisplaySection.style.display = 'block';
+                     }
+                     
+                     // Reset form after delay
+                     setTimeout(function() {
+                         form.reset();
+                         submitBtn.innerHTML = '<i class="fa fa-paper-plane" aria-hidden="true"></i> Send Message';
+                         submitBtn.disabled = false;
+                         hideStatus();
+                         console.log('Form reset');
+                     }, 3000);
+                     
+                 } catch (error) {
+                     console.error('Error opening email client:', error);
+                     showError('Could not open email client. Please copy the email address below and send manually.');
+                     
+                     // Show email address for manual copy
+                     if (emailDisplaySection) {
+                         emailDisplaySection.style.display = 'block';
+                     }
+                     
+                     submitBtn.innerHTML = '<i class="fa fa-paper-plane" aria-hidden="true"></i> Send Message';
+                     submitBtn.disabled = false;
+                 }
             });
             
             console.log('Contact form initialized successfully');
