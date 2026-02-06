@@ -20,22 +20,25 @@
             </a>
         </div>
         
-        <!-- Option 2: Obfuscated Email -->
+        <!-- Option 2: Research Collaboration -->
         <div class="contact-option" style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e9ecef; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
             <div style="background-color: #2ecc71; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
-                <i class="fa fa-shield" aria-hidden="true"></i>
+                <i class="fa fa-flask" aria-hidden="true"></i>
             </div>
-            <h3 style="margin-top: 0; color: #2c3e50;">Protected Email</h3>
+            <h3 style="margin-top: 0; color: #2c3e50;">Research Collaboration</h3>
             <p style="color: #666; line-height: 1.6;">
-                Direct email address protected by JavaScript obfuscation.
-                Requires JavaScript to decode and display.
+                Interested in research collaboration, academic discussions, or project partnerships?
+                Use the contact form to discuss potential opportunities.
             </p>
-            <div id="secure-email-container" style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 5px; border: 1px dashed #dee2e6;">
-                <div id="secure-email-placeholder">
-                    <p style="margin: 0; color: #666; font-style: italic;">
-                        Loading secure email address...
-                    </p>
-                </div>
+            <div style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 5px; border: 1px dashed #dee2e6;">
+                <p style="margin: 0; color: #666; font-style: italic;">
+                    For research inquiries, please include:
+                </p>
+                <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #666;">
+                    <li>Your research background</li>
+                    <li>Project or topic of interest</li>
+                    <li>Potential collaboration ideas</li>
+                </ul>
             </div>
         </div>
         
@@ -73,94 +76,8 @@
 </div>
 
 <script>
-// Advanced email obfuscation with multiple layers
-(function() {
-    // Layer 1: Character shift obfuscation
-    function decodeLayer1(encoded) {
-        var decoded = "";
-        for (var i = 0; i < encoded.length; i++) {
-            decoded += String.fromCharCode(encoded.charCodeAt(i) - 3);
-        }
-        return decoded;
-    }
-    
-    // Layer 2: Reverse string
-    function decodeLayer2(encoded) {
-        return encoded.split('').reverse().join('');
-    }
-    
-    // Layer 3: Base64-like decoding (simplified)
-    function decodeLayer3(encoded) {
-        var parts = encoded.split('.');
-        var decoded = "";
-        for (var i = 0; i < parts.length; i++) {
-            decoded += String.fromCharCode(parseInt(parts[i], 36) - 100);
-        }
-        return decoded;
-    }
-    
-    // Multi-layer encoded email (obfuscated in production)
-    var encodedEmail = "112.113.114.115.116.64.117.118.119.120.121.46.122.123.124";
-    
-    // Decode email
-    var email = decodeLayer3(encodedEmail);
-    
-    // Display when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
-        var container = document.getElementById('secure-email-placeholder');
-        if (container) {
-            // Create mailto link
-            var mailtoLink = document.createElement('a');
-            mailtoLink.href = 'mailto:' + email;
-            mailtoLink.textContent = email;
-            mailtoLink.style.color = '#2c3e50';
-            mailtoLink.style.textDecoration = 'none';
-            mailtoLink.style.fontWeight = '600';
-            mailtoLink.style.fontFamily = 'monospace';
-            
-            // Add hover effect
-            mailtoLink.addEventListener('mouseover', function() {
-                this.style.color = '#3498db';
-                this.style.textDecoration = 'underline';
-            });
-            mailtoLink.addEventListener('mouseout', function() {
-                this.style.color = '#2c3e50';
-                this.style.textDecoration = 'none';
-            });
-            
-            // Replace placeholder
-            container.innerHTML = '';
-            container.appendChild(mailtoLink);
-            
-            // Add copy button
-            var copyBtn = document.createElement('button');
-            copyBtn.innerHTML = '<i class="fa fa-copy" aria-hidden="true"></i> Copy';
-            copyBtn.style.marginLeft = '10px';
-            copyBtn.style.padding = '4px 8px';
-            copyBtn.style.fontSize = '0.8em';
-            copyBtn.style.backgroundColor = '#6c757d';
-            copyBtn.style.color = 'white';
-            copyBtn.style.border = 'none';
-            copyBtn.style.borderRadius = '3px';
-            copyBtn.style.cursor = 'pointer';
-            
-            copyBtn.addEventListener('click', function() {
-                navigator.clipboard.writeText(email).then(function() {
-                    var originalText = copyBtn.innerHTML;
-                    copyBtn.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i> Copied!';
-                    copyBtn.style.backgroundColor = '#28a745';
-                    setTimeout(function() {
-                        copyBtn.innerHTML = originalText;
-                        copyBtn.style.backgroundColor = '#6c757d';
-                    }, 2000);
-                });
-            });
-            
-            container.appendChild(copyBtn);
-        }
-    });
-    
-    // Add CSS for better appearance
+// Add CSS for better appearance
+document.addEventListener('DOMContentLoaded', function() {
     var style = document.createElement('style');
     style.textContent = `
         .secure-contact-options .btn:hover {
@@ -177,18 +94,5 @@
         }
     `;
     document.head.appendChild(style);
-})();
+});
 </script>
-
-<!-- Fallback for no JavaScript -->
-<noscript>
-    <div style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; border: 1px solid #f5c6cb; margin: 20px 0;">
-        <h4 style="margin-top: 0;">JavaScript Required</h4>
-        <p>JavaScript is required to display the protected email address. Please:</p>
-        <ul style="margin-bottom: 0;">
-            <li>Enable JavaScript in your browser, or</li>
-            <li>Use the <a href="/contact/" style="color: #721c24; text-decoration: underline;">secure contact form</a>, or</li>
-            <li>Connect via <a href="https://www.linkedin.com/in/mohamed-rami-gaddem" target="_blank" style="color: #721c24; text-decoration: underline;">LinkedIn</a></li>
-        </ul>
-    </div>
-</noscript>
