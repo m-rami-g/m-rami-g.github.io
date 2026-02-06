@@ -16,7 +16,7 @@ Through collaborative research projects that connect academic innovation with in
 
 ## Professional Background
 
-- **Researcher** – (UTokyo - 2022 ~ 2026) – Developing innovative solutions for applications in the pharmaceutical industry
+- **Researcher** – (UTokyo - 2022 ~ 2026) – Developing innovative solutions for the pharmaceutical industry
 - **Doctorate of Engineering in Chemical Science and Engineering** (Tokyo Tech, 2021) 
 - **Master's Degree of Engineering in Chemical Engineering** (2017) 
 - **National Diploma of Engineering in Industrial Biology** (2014)
