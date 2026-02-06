@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Researcher - Industrial Systems in the Bio/Chemical Engineering Fields"
+title: "Mohamed Rami Gaddem"
 author_profile: true
 redirect_from: 
   - /about/
@@ -9,23 +9,17 @@ redirect_from:
 
 ## Welcome
 
-Welcome to my website. I am a researcher with expertise in bio/chemical engineering. Leading collaborative research projects between academia and industry (check my publications). I fill the gap between abstract computational models and pragmatic hands-on approaches to solve complex problems and deliver added-value.
+I'm a researcher specializing in bio/chemical engineering systems, with expertise in computational fluid dynamics (CFD), machine learning, process optimization. My work bridges advanced computational methods with practical industrial applications.
+
+Through collaborative research projects that connect academic innovation with industrial needs, I translate complex computational models into tangible engineering solutions that address real-world challenges and drive technological advancement. 
 
 
-## Interests
+## Professional Background
 
-My interests span:
-
-- Computational Fluid Dynamics (CFD)
-- Machine Learning & AI
-- Digital Twins
-- Chemical, Pharmaceutical and Food Industries
+- **Researcher** – (UTokyo - 2022 ~ 2026) – Developing innovative solutions for applications in the pharmaceutical industry
+- **Doctorate of Engineering in Chemical Science and Engineering** (Tokyo Tech, 2021) 
+- **Master's Degree of Engineering in Chemical Engineering** (2017) 
+- **National Diploma of Engineering in Industrial Biology** (2014)
 
 
-## Short CV
-
-- Researcher (current)
-- Doctorate of Engineering in Chemical Science and Engineering (2021)
-- Master's Degree of Engineering in Chemical Engineering (2017)
-- National Diploma of Engineering in Industrial Biology (2014)
 
