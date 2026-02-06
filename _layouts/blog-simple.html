@@ -20,12 +20,8 @@ layout: default
         </h1>
         
         <div class="page__meta" style="font-size: 0.9em; color: #666;">
-          {% if page.date %}
-            <span><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ page.date | date: "%B %d, %Y" }}</span>
-          {% endif %}
-          
           {% if page.tags %}
-            <span style="margin-left: 1em;">
+            <span>
               <i class="fa fa-fw fa-tags" aria-hidden="true"></i>
               {% for tag in page.tags %}
                 <span class="page__taxonomy-item" style="font-size: 0.85em;">{{ tag }}</span>

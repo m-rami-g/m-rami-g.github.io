@@ -1,0 +1,35 @@
+<!-- Secure Email Display - Protected from spam bots -->
+<script>
+// Email obfuscation to prevent spam
+function decodeEmail(encoded) {
+    // Simple character shift obfuscation
+    var decoded = "";
+    for (var i = 0; i < encoded.length; i++) {
+        decoded += String.fromCharCode(encoded.charCodeAt(i) - 1);
+    }
+    return decoded;
+}
+
+// Obfuscated email (each character shifted +1)
+var encodedEmail = "nbsjhm/Sfni/Hfse/nbsjhm/Sfni/Hfse";
+var emailParts = decodeEmail(encodedEmail).split('/');
+var email = emailParts[0] + '@' + emailParts[1] + '.' + emailParts[2];
+
+// Display email when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    var emailElement = document.getElementById('secure-email');
+    if (emailElement) {
+        emailElement.innerHTML = '<a href="mailto:' + email + '">' + email + '</a>';
+    }
+});
+</script>
+
+<!-- Fallback for users without JavaScript -->
+<noscript>
+    <div style="background-color: #f8f9fa; padding: 10px; border-radius: 5px; margin: 10px 0;">
+        <p><strong>Email (JavaScript required for display):</strong></p>
+        <p>Please enable JavaScript to view the email address, or contact me through 
+           <a href="https://www.linkedin.com/in/mohamed-rami-gaddem" target="_blank">LinkedIn</a>.
+        </p>
+    </div>
+</noscript>

@@ -22,4 +22,6 @@ Through collaborative research projects that connect academic innovation with in
 - **National Diploma of Engineering in Industrial Biology** (2014)
 
 
+## Contact
 
+{% include secure-contact-options.html %}
