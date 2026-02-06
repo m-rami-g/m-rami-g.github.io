@@ -4,316 +4,323 @@ title: Contact
 permalink: /contact/
 ---
 
-## Contact
-
-<div class="contact-form-container" id="contactFormContainer">
-    <form id="contactForm" class="contact-form">
-        <div class="form-group">
-            <label for="name">Name *</label>
-            <input type="text" id="name" name="name" required class="form-control">
-        </div>
-        
-        <div class="form-group">
-            <label for="email">Your Email *</label>
-            <input type="email" id="email" name="email" required class="form-control">
-        </div>
-        
-        <div class="form-group">
-            <label for="subject">Subject *</label>
-            <input type="text" id="subject" name="subject" required class="form-control">
-        </div>
-        
-        <div class="form-group">
-            <label for="message">Message *</label>
-            <textarea id="message" name="message" rows="6" required class="form-control"></textarea>
-        </div>
-        
-        <!-- Hidden field that will be populated with decoded email -->
-        <input type="hidden" id="targetEmail" name="targetEmail">
-        
-        <button type="submit" class="btn btn-primary" id="submitBtn">
-            <i class="fa fa-paper-plane" aria-hidden="true"></i> Send Message
-        </button>
-        
-        <div id="formStatus" class="form-status" style="display: none;"></div>
-        
-        <!-- Email display for manual copy -->
-        <div id="emailDisplaySection" class="email-display-section" style="display: none; margin-top: 1rem;">
-            <p><strong>Email address:</strong> <code id="emailDisplay"></code></p>
-            <button id="copyEmailBtn" class="btn btn-secondary">
-                <i class="fa fa-copy" aria-hidden="true"></i> Copy Email
-            </button>
-        </div>
-    </form>
+<div class="contact-container" style="max-width: 600px; margin: 0 auto; padding: 2rem; text-align: center;">
+    <button id="contactButton" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+        <i class="fa fa-envelope" aria-hidden="true"></i> Click here for contact details
+    </button>
     
-    <div class="form-notice">
-        <p><small>Your message will open in your email client. No third-party services are used.</small></p>
+        <div id="contactDetails" style="display: none; margin-top: 2rem;">
+        <div class="email-image" style="margin-bottom: 1.5rem;">
+            <p><strong>Email address:</strong></p>
+            <div style="overflow-x: auto; margin: 0 -1rem; padding: 0 1rem;">
+                <canvas id="emailCanvas" width="800" height="120" style="width: 100%; max-width: 800px; border: 1px solid #ddd; border-radius: 4px; background-color: white;"></canvas>
+            </div>
+        </div>
+        
+        <div class="instructions" style="margin-top: 1.5rem;">
+            <p><strong>Instructions:</strong></p>
+            <p>Replace "at" with "@" and "dot" with "." and eliminate spaces.</p>
+        </div>
     </div>
 </div>
 
-<!-- Obfuscated email decoder (multi-layer protection) -->
 <script>
-(function() {
-    'use strict';
+document.addEventListener('DOMContentLoaded', function() {
+    var contactButton = document.getElementById('contactButton');
+    var contactDetails = document.getElementById('contactDetails');
+    var emailCanvas = document.getElementById('emailCanvas');
+    var canvasGenerated = false;
     
-    // Multi-layer obfuscated email storage
-    var analyticsData = {
-        metrics: [218, 165, 23, 220, 157],
-        timestamps: [1738867200, 1738953600, 1739040000],
-        userData: ["bV9yYW1pX2c=", "QHByb3Rvbm1haWw=", "LmNvbQ=="]
-    };
+    // Function to generate obfuscated email image with distorted letters and random shapes
+    function generateEmailImage() {
+        if (!emailCanvas || canvasGenerated) return;
+        
+        var ctx = emailCanvas.getContext('2d');
+        var width = emailCanvas.width;
+        var height = emailCanvas.height;
+        
+        // Clear canvas
+        ctx.clearRect(0, 0, width, height);
+        
+        // Draw gradient background
+        var gradient = ctx.createLinearGradient(0, 0, width, height);
+        gradient.addColorStop(0, '#f8f8f8');
+        gradient.addColorStop(1, '#e8e8e8');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+        
+        // Draw inner background with subtle pattern
+        ctx.fillStyle = 'white';
+        ctx.fillRect(10, 10, width - 20, height - 20);
+        
+        // Draw random shapes as background noise
+        drawRandomShapes(ctx, width, height);
+        
+        // Draw distorted text
+        drawDistortedText(ctx, width, height);
+        
+        // Draw more random shapes on top
+        drawRandomShapes(ctx, width, height, true);
+        
+        // Add subtle overlay for blur effect
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+        ctx.fillRect(0, 0, width, height);
+        
+        canvasGenerated = true;
+    }
     
-    // Simplified decoding function
-    function decodeEmail() {
-        try {
-            // Base64 encoded parts of the email
-            var parts = ["bV9yYW1pX2c=", "QHByb3Rvbm1haWw=", "LmNvbQ=="];
-            var result = '';
+    // Function to draw random shapes with more variety
+    function drawRandomShapes(ctx, width, height, onTop = false) {
+        var shapeCount = onTop ? 30 : 50; // Increased shape count
+        
+        for (var i = 0; i < shapeCount; i++) {
+            var x = Math.random() * width;
+            var y = Math.random() * height;
+            var size = 3 + Math.random() * 20; // More size variation
+            var opacity = onTop ? 0.08 : 0.04; // Adjusted opacity
             
-            for (var i = 0; i < parts.length; i++) {
-                result += atob(parts[i]);
+            ctx.fillStyle = 'rgba(' + 
+                Math.floor(Math.random() * 120) + ',' + 
+                Math.floor(Math.random() * 120) + ',' + 
+                Math.floor(Math.random() * 120) + ',' + 
+                opacity + ')';
+            
+            var shapeType = Math.floor(Math.random() * 6); // 6 shape types now
+            
+            switch(shapeType) {
+                case 0: // Circle
+                    ctx.beginPath();
+                    ctx.arc(x, y, size, 0, Math.PI * 2);
+                    ctx.fill();
+                    break;
+                    
+                case 1: // Rectangle
+                    ctx.fillRect(x, y, size, size * 0.7);
+                    break;
+                    
+                case 2: // Triangle
+                    ctx.beginPath();
+                    ctx.moveTo(x, y);
+                    ctx.lineTo(x + size, y + size);
+                    ctx.lineTo(x - size/2, y + size);
+                    ctx.closePath();
+                    ctx.fill();
+                    break;
+                    
+                case 3: // Diamond
+                    ctx.beginPath();
+                    ctx.moveTo(x, y - size);
+                    ctx.lineTo(x + size, y);
+                    ctx.lineTo(x, y + size);
+                    ctx.lineTo(x - size, y);
+                    ctx.closePath();
+                    ctx.fill();
+                    break;
+                    
+                case 4: // Cross
+                    ctx.fillRect(x - size/4, y - size/2, size/2, size);
+                    ctx.fillRect(x - size/2, y - size/4, size, size/2);
+                    break;
+                    
+                case 5: // Line
+                    ctx.strokeStyle = ctx.fillStyle;
+                    ctx.lineWidth = 0.5 + Math.random() * 3;
+                    ctx.beginPath();
+                    ctx.moveTo(x, y);
+                    ctx.lineTo(x + size * 2, y + (Math.random() * size - size/2));
+                    ctx.stroke();
+                    break;
             }
-            
-            console.log("Decoded email:", result);
-            return result;
-            
-        } catch (error) {
-            console.error("Decoding error:", error);
-            // Fallback email
-            return "m_rami_g@protonmail.com";
         }
     }
     
-    // Form submission handler
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM loaded, initializing contact form...');
-        
-        var form = document.getElementById('contactForm');
-        var targetEmailField = document.getElementById('targetEmail');
-        var formStatus = document.getElementById('formStatus');
-        var submitBtn = document.getElementById('submitBtn');
-        var emailDisplaySection = document.getElementById('emailDisplaySection');
-        var emailDisplay = document.getElementById('emailDisplay');
-        var copyEmailBtn = document.getElementById('copyEmailBtn');
-        
-        console.log('Form elements found:', {
-            form: !!form,
-            targetEmailField: !!targetEmailField,
-            formStatus: !!formStatus,
-            submitBtn: !!submitBtn,
-            emailDisplaySection: !!emailDisplaySection,
-            emailDisplay: !!emailDisplay,
-            copyEmailBtn: !!copyEmailBtn
-        });
-        
-        // Store decoded email globally for fallback
-        var decodedEmail = null;
-        
-        if (form && targetEmailField && submitBtn) {
-            // Decode email and set in hidden field
-            decodedEmail = decodeEmail();
-            targetEmailField.value = decodedEmail || "";
-            console.log("Email decoded:", decodedEmail);
+        // Function to decrypt the obfuscated email text
+        function decryptEmailText() {
+            // Encrypted text using simple character code offset
+            var encrypted = '119 42 105 42 124 42 107 42 119 42 115 42 105 42 113 42 42 42 107 42 126 42 42 42 122 42 124 42 121 42 126 42 121 42 120 42 119 42 107 42 115 42 118 42 42 42 110 42 121 42 126 42 42 42 109 42 121 42 119';
+            var parts = encrypted.split(' ');
+            var decrypted = '';
             
-            // Test the decoding
-            console.log("Base64 test:", {
-                part1: atob("bV9yYW1pX2c="),
-                part2: atob("QHByb3Rvbm1haWw="),
-                part3: atob("LmNvbQ==")
-            });
-            
-            if (!decodedEmail) {
-                showError('Could not initialize contact form. Please refresh the page.');
-                submitBtn.disabled = true;
-                return;
+            // Simple offset decryption: subtract 10 from each character code
+            for (var i = 0; i < parts.length; i++) {
+                var charCode = parseInt(parts[i]) - 10;
+                decrypted += String.fromCharCode(charCode);
             }
             
-            // Set up copy email button
-            if (copyEmailBtn && emailDisplay) {
-                emailDisplay.textContent = decodedEmail;
-                copyEmailBtn.addEventListener('click', function() {
-                    navigator.clipboard.writeText(decodedEmail).then(function() {
-                        showSuccess('Email copied to clipboard!');
-                        copyEmailBtn.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i> Copied!';
-                        copyEmailBtn.disabled = true;
-                        setTimeout(() => {
-                            copyEmailBtn.innerHTML = '<i class="fa fa-copy" aria-hidden="true"></i> Copy Email';
-                            copyEmailBtn.disabled = false;
-                        }, 2000);
-                    }).catch(function(err) {
-                        console.error('Copy failed:', err);
-                        showError('Could not copy email. Please copy manually: ' + decodedEmail);
-                    });
-                });
+            return decrypted;
+        }
+        
+        // Function to draw distorted text with increased distortion
+        function drawDistortedText(ctx, width, height) {
+            var text = decryptEmailText(); // Decrypt when needed
+            var chars = text.split('');
+        
+        // Calculate total width to center the text
+        ctx.font = '18px "DejaVu Sans", sans-serif'; // Slightly smaller font
+        var totalWidth = 0;
+        for (var i = 0; i < chars.length; i++) {
+            totalWidth += ctx.measureText(chars[i]).width + 2;
+            if (chars[i] === '_' || chars[i] === ' ') {
+                totalWidth += 5;
             }
+        }
+        
+        // Center the text horizontally
+        var startX = Math.max(20, (width - totalWidth) / 2);
+        var x = startX;
+        var y = 60; // Moved down slightly
+        
+        // Draw each character with increased distortion
+        for (var i = 0; i < chars.length; i++) {
+            var char = chars[i];
             
-             // Handle form submission
-             form.addEventListener('submit', function(e) {
-                 e.preventDefault();
-                 e.stopPropagation();
-                 
-                 // Get form data
-                 var name = document.getElementById('name').value.trim();
-                 var userEmail = document.getElementById('email').value.trim();
-                 var subject = document.getElementById('subject').value.trim();
-                 var message = document.getElementById('message').value.trim();
-                 var targetEmail = targetEmailField.value;
-                 
-                 console.log('Form submitted:', { name, userEmail, subject, message, targetEmail });
-                 
-                 // Validate form
-                 if (!name || !userEmail || !subject || !message) {
-                     showError('Please fill in all required fields.');
-                     return false;
-                 }
-                 
-                 if (!targetEmail) {
-                     showError('Error: Contact information not available.');
-                     return false;
-                 }
-                 
-                 // Validate email format
-                 var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                 if (!emailRegex.test(userEmail)) {
-                     showError('Please enter a valid email address.');
-                     return false;
-                 }
-                 
-                 // Construct mailto link
-                 var emailBody = 'Name: ' + name + '\n' +
-                                'From: ' + userEmail + '\n\n' +
-                                'Message:\n' + message + '\n\n' +
-                                '---\nSent via website contact form';
-                 
-                 var mailtoLink = 'mailto:' + targetEmail +
-                                  '?subject=' + encodeURIComponent('Website Contact: ' + subject) +
-                                  '&body=' + encodeURIComponent(emailBody);
-                 
-                 console.log('Mailto link created:', mailtoLink);
-                 
-                 // Show loading state
-                 submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Opening email...';
-                 submitBtn.disabled = true;
+            // Random color variation
+            var grayValue = 20 + Math.floor(Math.random() * 60); // Increased variation
+            ctx.fillStyle = 'rgb(' + grayValue + ',' + grayValue + ',' + grayValue + ')';
+            
+            // INCREASED position offset for distortion
+            var offsetX = (Math.random() * 4 - 2); // -2 to 2 (increased)
+            var offsetY = (Math.random() * 4 - 2); // -2 to 2 (increased)
+            
+            // INCREASED rotation for distortion
+            var rotation = (Math.random() * 0.4 - 0.2); // -0.2 to 0.2 radians (increased)
+            
+            // Save context state
+            ctx.save();
+            
+            // Apply transformations
+            ctx.translate(x + offsetX, y + offsetY);
+            ctx.rotate(rotation);
+            
+            // Draw character
+            ctx.fillText(char, 0, 0);
+            
+            // Restore context
+            ctx.restore();
+            
+            // Move to next character position
+            x += ctx.measureText(char).width + 2;
+            
+            // Add extra space for underscores and spaces
+            if (char === '_' || char === ' ') {
+                x += 5;
+            }
+        }
+        
+        // Draw duplicate distorted version with MORE distortion
+        ctx.fillStyle = 'rgba(80, 80, 80, 0.4)'; // Darker duplicate
+        x = startX + 2;
+        y = 62;
+        
+        for (var i = 0; i < chars.length; i++) {
+            var char = chars[i];
+            // EVEN MORE distortion for duplicate
+            var offsetX = (Math.random() * 6 - 3); // -3 to 3
+            var offsetY = (Math.random() * 6 - 3); // -3 to 3
+            
+            ctx.save();
+            ctx.translate(x + offsetX, y + offsetY);
+            ctx.rotate(Math.random() * 0.6 - 0.3); // -0.3 to 0.3 radians
+            ctx.fillText(char, 0, 0);
+            ctx.restore();
+            
+            x += ctx.measureText(char).width + 2;
+            if (char === '_' || char === ' ') {
+                x += 5;
+            }
+        }
+        
+        // Draw triple distorted version (very faint)
+        ctx.fillStyle = 'rgba(120, 120, 120, 0.2)';
+        x = startX - 2;
+        y = 58;
+        
+        for (var i = 0; i < chars.length; i++) {
+            var char = chars[i];
+            var offsetX = (Math.random() * 8 - 4); // -4 to 4
+            var offsetY = (Math.random() * 8 - 4); // -4 to 4
+            
+            ctx.save();
+            ctx.translate(x + offsetX, y + offsetY);
+            ctx.rotate(Math.random() * 0.8 - 0.4); // -0.4 to 0.4 radians
+            ctx.fillText(char, 0, 0);
+            ctx.restore();
+            
+            x += ctx.measureText(char).width + 2;
+            if (char === '_' || char === ' ') {
+                x += 5;
+            }
+        }
+        
+        // Draw more interference lines through text
+        ctx.strokeStyle = 'rgba(180, 180, 180, 0.5)';
+        ctx.lineWidth = 1;
+        
+        // Multiple wavy lines
+        for (var line = 0; line < 3; line++) {
+            ctx.beginPath();
+            var lineY = 40 + line * 20;
+            for (var i = startX; i < startX + totalWidth; i += 5) {
+                var waveY = lineY + Math.sin(i * 0.03 + line) * 8;
+                if (i === startX) {
+                    ctx.moveTo(i, waveY);
+                } else {
+                    ctx.lineTo(i, waveY);
+                }
+            }
+            ctx.stroke();
+        }
+        
+        // Multiple diagonal lines
+        for (var diag = 0; diag < 2; diag++) {
+            ctx.beginPath();
+            var startY = 30 + diag * 40;
+            var endY = 90 - diag * 40;
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(startX + totalWidth, endY);
+            ctx.stroke();
+        }
+        
+        // Random short lines through text
+        ctx.strokeStyle = 'rgba(150, 150, 150, 0.3)';
+        ctx.lineWidth = 0.5 + Math.random();
+        for (var i = 0; i < 10; i++) {
+            var lineX = startX + Math.random() * totalWidth;
+            var lineY = 40 + Math.random() * 40;
+            var lineLength = 10 + Math.random() * 30;
+            var angle = Math.random() * Math.PI;
+            
+            ctx.beginPath();
+            ctx.moveTo(lineX, lineY);
+            ctx.lineTo(lineX + Math.cos(angle) * lineLength, lineY + Math.sin(angle) * lineLength);
+            ctx.stroke();
+        }
+    }
+    
+    if (contactButton && contactDetails) {
+        contactButton.addEventListener('click', function() {
+            // Toggle display of contact details
+            if (contactDetails.style.display === 'none') {
+                contactDetails.style.display = 'block';
+                contactButton.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i> Hide contact details';
+                contactButton.classList.remove('btn-primary');
+                contactButton.classList.add('btn-secondary');
                 
-                 // Simple method to open email client
-                 try {
-                     // Create a temporary link and click it
-                     var tempLink = document.createElement('a');
-                     tempLink.href = mailtoLink;
-                     tempLink.style.display = 'none';
-                     document.body.appendChild(tempLink);
-                     tempLink.click();
-                     document.body.removeChild(tempLink);
-                     
-                     // Show success message
-                     showSuccess('Attempting to open email client... If it doesn\'t open, copy the email address below.');
-                     console.log('Email client opening attempted');
-                     
-                     // Show email address for manual copy
-                     if (emailDisplaySection) {
-                         emailDisplaySection.style.display = 'block';
-                     }
-                     
-                     // Reset form after delay
-                     setTimeout(function() {
-                         form.reset();
-                         submitBtn.innerHTML = '<i class="fa fa-paper-plane" aria-hidden="true"></i> Send Message';
-                         submitBtn.disabled = false;
-                         hideStatus();
-                         console.log('Form reset');
-                     }, 3000);
-                     
-                 } catch (error) {
-                     console.error('Error opening email client:', error);
-                     showError('Could not open email client. Please copy the email address below and send manually.');
-                     
-                     // Show email address for manual copy
-                     if (emailDisplaySection) {
-                         emailDisplaySection.style.display = 'block';
-                     }
-                     
-                     submitBtn.innerHTML = '<i class="fa fa-paper-plane" aria-hidden="true"></i> Send Message';
-                     submitBtn.disabled = false;
-                 }
-            });
-            
-            console.log('Contact form initialized successfully');
-        } else {
-            console.error('Form elements not found');
-        }
-        
-        function showError(message) {
-            console.error('Form error:', message);
-            if (formStatus) {
-                formStatus.textContent = message;
-                formStatus.className = 'form-status error';
-                formStatus.style.display = 'block';
+                // Generate the image when details are shown
+                setTimeout(generateEmailImage, 100);
+            } else {
+                contactDetails.style.display = 'none';
+                contactButton.innerHTML = '<i class="fa fa-envelope" aria-hidden="true"></i> Click here for contact details';
+                contactButton.classList.remove('btn-secondary');
+                contactButton.classList.add('btn-primary');
             }
-        }
-        
-        function showSuccess(message) {
-            console.log('Form success:', message);
-            if (formStatus) {
-                formStatus.textContent = message;
-                formStatus.className = 'form-status success';
-                formStatus.style.display = 'block';
-            }
-        }
-        
-         function hideStatus() {
-             if (formStatus) {
-                 formStatus.style.display = 'none';
-             }
-         }
-     });
- })();
+        });
+    }
+});
 </script>
 
 <style>
-.contact-form-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-.contact-form {
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    border: 1px solid #dee2e6;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #2c3e50;
-    font-size: 1rem;
-}
-
-.form-control {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 1rem;
-    background-color: #ffffff;
-    color: #495057;
-    transition: border-color 0.15s ease-in-out;
-}
-
-.form-control:focus {
-    border-color: #3498db;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(52,152,219,.25);
-}
-
-.btn-primary {
+.btn {
     background-color: #3498db;
     color: white;
     border: none;
@@ -328,95 +335,19 @@ permalink: /contact/
     font-weight: 600;
 }
 
-.btn-primary:hover {
+.btn:hover {
     background-color: #2980b9;
 }
 
-.btn-primary:disabled {
-    background-color: #95a5a6;
-    cursor: not-allowed;
+.btn-primary {
+    background-color: #3498db;
 }
 
 .btn-secondary {
     background-color: #6c757d;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
 }
 
 .btn-secondary:hover {
     background-color: #5a6268;
-}
-
-.btn-secondary:disabled {
-    background-color: #95a5a6;
-    cursor: not-allowed;
-}
-
-.form-status {
-    margin-top: 1rem;
-    padding: 0.75rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    display: none;
-}
-
-.form-status.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.form-status.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-
-
-.form-notice {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background-color: #e8f4fc;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    color: #2c3e50;
-    border-left: 4px solid #3498db;
-}
-
- /* Ensure good contrast for all text */
-.contact-form-container * {
-    color: #2c3e50;
-}
-
- /* Fix for any inherited white text */
-input, textarea, select {
-    color: #495057 !important;
- }
- 
- /* Email display section */
-.email-display-section {
-    background-color: #f8f9fa;
-    padding: 1rem;
-    border-radius: 4px;
-    border: 1px solid #dee2e6;
-    margin-top: 1rem;
-}
-
-.email-display-section code {
-    background-color: #e9ecef;
-    padding: 0.2rem 0.4rem;
-    border-radius: 3px;
-    font-family: monospace;
-    display: inline-block;
-    margin: 0.5rem 0;
 }
 </style>
