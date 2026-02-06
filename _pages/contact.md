@@ -24,7 +24,7 @@ permalink: /contact/
     </div>
 </div>
 
-<script src="/assets/js/contact-button-simple.js"></script>
+<script src="/assets/js/contact-button-final.js"></script>
 
 <style>
 .btn {
