@@ -7,30 +7,30 @@
 # server process.
 
 # Basic Site Settings
-locale                   : 
+locale                   : "en-US"
 site_theme               : "default" # Currently available options are "default", "air"
 title                    : "Top"
-title_separator          : " | "
+title_separator          : "-"
 name                     : &name "Mohamed Rami Gaddem"
-description              : &description   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "Your Name's academic website"   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : https://m-rami-g.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
-                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
+                                                           # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "m-rami-g/m-rami-g.github.io"
+repository               : "academicpages/academicpages.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  #avatar           : 
-  name             : "Mohamed Rami Gaddem"
+  avatar           : "profile.png"
+  name             : "Rami"
   pronouns         : # example: "she/her"  
   bio              : "CFD | ML | Optimization | Systems Engineering | Scientific Computing | HPC"
   location         :
   #employer         : #nothing
   uri              : # URL
-  email            : "contact@example.com" # UPDATE with your actual email 
+  email            : "none@example.org" 
 
   # Academic websites
   #academia         : # URL
@@ -51,7 +51,7 @@ author:
   #bitbucket        : # Username - Update with your username on the site
   #codepen          : # Username
   #dribbble         : # Username
-  github           : "m-rami-g"
+  #github           : "academicpages"
   #kaggle           : # Username  
   #stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
@@ -89,7 +89,7 @@ publication_category:
   manuscripts:
     title: 'Journal Articles'    
   conferences:
-    title: 'Conference Papers'
+    title: 'Conferences'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews

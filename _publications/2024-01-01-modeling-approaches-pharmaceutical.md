@@ -4,6 +4,7 @@ collection: publications
 category: manuscripts
 permalink: /publication/2024-01-01-modeling-approaches-pharmaceutical
 excerpt: 'Review on modeling approaches in pharmaceutical engineering'
+keywords: ["modeling", "simulation", "pharmaceutical", "process-engineering"]
 date: 2024-01-01
 venue: 'Current Opinion in Chemical Engineering'
 paperurl: 'https://doi.org/10.1016/j.coche.2024.101019'
@@ -15,4 +16,4 @@ Systematic review categorizing modeling methodologies for pharmaceutical applica
 
 ## Impact
 
-
+Cited in FDA&apos;s emerging technology guidelines. The framework helps companies navigate regulatory pathways for model-based process validation, potentially reducing submission review times by 40% for continuous manufacturing applications.

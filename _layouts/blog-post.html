@@ -1,0 +1,238 @@
+---
+layout: default
+---
+
+{% include base_path %}
+
+{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
+  {% include page__hero.html %}
+{% endif %}
+
+{% if page.url != "/" and site.breadcrumbs %}
+  {% unless paginator %}
+    {% include breadcrumbs.html %}
+  {% endunless %}
+{% endif %}
+
+<div id="main" role="main">
+  {% include sidebar.html %}
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
+    {% if page.modified %}<meta itemprop="dateModified" content="{{ page.modified | date: "%B %d, %Y" }}">{% endif %}
+
+    <div class="page__inner-wrap">
+      {% unless page.header.overlay_color or page.header.overlay_image %}
+        <header>
+          {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
+          
+          {% if page.read_time %}
+            <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
+          {% endif %}
+        
+        {% if page.modified %}
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
+        {% elsif page.date %}
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
+        {% endif %}
+        
+        <!-- Blog post metadata -->
+        {% if page.tags %}
+          <p class="page__meta">
+            <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags:</strong>
+            {% for tag in page.tags %}
+              <span class="page__taxonomy-item">{{ tag }}</span>
+            {% endfor %}
+          </p>
+        {% endif %}
+        </header>
+      {% endunless %}
+
+      <section class="page__content blog-post-content" itemprop="text">
+        {{ content }}
+        
+        <!-- Blog post specific links -->
+        {% if page.code %}
+          <p><a href="{{ page.code }}" class="btn btn--primary"><i class="fab fa-github"></i> View Code</a></p>
+        {% endif %}
+        
+        {% if page.slides %}
+          <p><a href="{{ page.slides }}" class="btn btn--info"><i class="fas fa-file-powerpoint"></i> View Slides</a></p>
+        {% endif %}
+        
+        {% if page.video %}
+          <p><a href="{{ page.video }}" class="btn btn--danger"><i class="fab fa-youtube"></i> Watch Video</a></p>
+        {% endif %}
+      </section>
+
+      <footer class="page__meta">
+        {% if site.data.ui-text[site.locale].meta_label %}
+          <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
+        {% endif %}
+        {% include page__taxonomy.html %}
+      </footer>
+
+      {% if page.share %}{% include social-share.html %}{% endif %}
+
+      {% include post_pagination.html %}
+    </div>
+
+    {% if site.comments.provider and page.comments %}
+      {% include comments.html %}
+    {% endif %}
+  </article>
+
+  {% comment %}<!-- only show related on a post page when `related: true` -->{% endcomment %}
+  {% if page.id and page.related and site.related_posts.size > 0 %}
+    <div class="page__related">
+      <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
+      <div class="grid__wrapper">
+        {% for post in site.related_posts limit:4 %}
+          {% include archive-single.html type="grid" %}
+        {% endfor %}
+      </div>
+    </div>
+  {% comment %}<!-- otherwise show recent posts if no related when `related: true` -->{% endcomment %}
+  {% elsif page.id and page.related %}
+    <div class="page__related">
+      <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
+      <div class="grid__wrapper">
+        {% for post in site.posts limit:4 %}
+          {% unless post.id == page.id %}
+            {% include archive-single.html type="grid" %}
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+/* Blog post specific styling */
+.blog-post-content {
+    font-size: 1em;
+    line-height: 1.6;
+    max-width: 100%;
+}
+
+.blog-post-content p {
+    margin-bottom: 1.2em;
+}
+
+.blog-post-content h1 {
+    font-size: 1.8em;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+.blog-post-content h2 {
+    font-size: 1.5em;
+    margin-top: 1.3em;
+    margin-bottom: 0.7em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.blog-post-content h3 {
+    font-size: 1.2em;
+    margin-top: 1.1em;
+    margin-bottom: 0.6em;
+}
+
+.blog-post-content pre {
+    font-size: 0.9em;
+    padding: 1em;
+    margin: 1.5em 0;
+    overflow-x: auto;
+    background-color: #f8f8f8;
+    border-radius: 4px;
+}
+
+.blog-post-content code {
+    font-size: 0.9em;
+    padding: 0.2em 0.4em;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+}
+
+.blog-post-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 1.5em 0;
+    border-radius: 4px;
+}
+
+.blog-post-content blockquote {
+    font-size: 1em;
+    margin: 1.5em 0;
+    padding: 0.5em 1em;
+    border-left: 4px solid #e8e8e8;
+    background-color: #f9f9f9;
+    font-style: italic;
+}
+
+.blog-post-content table {
+    font-size: 0.9em;
+    margin: 1.5em 0;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.blog-post-content th,
+.blog-post-content td {
+    padding: 0.5em 0.75em;
+    border: 1px solid #e8e8e8;
+}
+
+.blog-post-content th {
+    background-color: #f8f8f8;
+    font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .blog-post-content {
+        font-size: 0.95em;
+    }
+    
+    .blog-post-content h1 {
+        font-size: 1.6em;
+    }
+    
+    .blog-post-content h2 {
+        font-size: 1.3em;
+    }
+    
+    .blog-post-content h3 {
+        font-size: 1.1em;
+    }
+}
+
+/* Print styles */
+@media print {
+    .blog-post-content {
+        font-size: 11pt;
+        line-height: 1.5;
+    }
+    
+    .blog-post-content h1 {
+        font-size: 16pt;
+    }
+    
+    .blog-post-content h2 {
+        font-size: 14pt;
+    }
+    
+    .blog-post-content h3 {
+        font-size: 12pt;
+    }
+    
+    .blog-post-content pre,
+    .blog-post-content code {
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
+}
+</style>

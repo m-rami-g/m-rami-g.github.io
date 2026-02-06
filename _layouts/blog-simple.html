@@ -1,0 +1,255 @@
+---
+layout: default
+---
+
+{% include base_path %}
+
+<div id="main" role="main">
+  {% include sidebar.html %}
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
+
+    <div class="page__inner-wrap">
+      <!-- Simple header without large bar -->
+      <header style="margin-bottom: 2em;">
+        <h1 class="page__title" itemprop="headline" style="margin-bottom: 0.5em; font-size: 1.8em;">
+          {{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}
+        </h1>
+        
+        <div class="page__meta" style="font-size: 0.9em; color: #666;">
+          {% if page.date %}
+            <span><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ page.date | date: "%B %d, %Y" }}</span>
+          {% endif %}
+          
+          {% if page.tags %}
+            <span style="margin-left: 1em;">
+              <i class="fa fa-fw fa-tags" aria-hidden="true"></i>
+              {% for tag in page.tags %}
+                <span class="page__taxonomy-item" style="font-size: 0.85em;">{{ tag }}</span>
+              {% endfor %}
+            </span>
+          {% endif %}
+        </div>
+      </header>
+      
+      <!-- Add code fix CSS -->
+      <style>
+      /* NUCLEAR OPTION: Fix ALL code blocks in blog posts */
+      .page__content .highlighter-rouge,
+      .page__content .highlighter-rouge .highlight,
+      .page__content .highlighter-rouge .highlight pre,
+      .page__content .highlighter-rouge .highlight code,
+      .page__content .highlighter-rouge .highlight pre code,
+      .page__content .highlighter-rouge .highlight span,
+      .page__content .highlighter-rouge .highlight pre span,
+      .page__content .highlighter-rouge .highlight code span {
+          font-size: 0.7em !important;
+          line-height: 1.2 !important;
+      }
+      
+      /* Fix the container divs */
+      .page__content .language-python,
+      .page__content .language-bash,
+      .page__content .language-text,
+      .page__content .language-plaintext {
+          font-size: 0.7em !important;
+      }
+      
+      /* Make sure pre tags are small */
+      .page__content pre {
+          font-size: 0.7em !important;
+          line-height: 1.2 !important;
+          padding: 0.6em !important;
+          margin: 0.8em 0 !important;
+      }
+      
+      /* Make sure code tags are small */
+      .page__content code {
+          font-size: 0.7em !important;
+          line-height: 1.2 !important;
+      }
+      </style>
+
+      <section class="page__content" itemprop="text" style="font-size: 1em; line-height: 1.6;">
+        {{ content }}
+        
+        <!-- Blog post specific links -->
+        {% if page.code or page.slides or page.video %}
+          <div style="margin-top: 2em; padding-top: 1em; border-top: 1px solid #e8e8e8;">
+            {% if page.code %}
+              <a href="{{ page.code }}" class="btn btn--primary" style="font-size: 0.9em; margin-right: 0.5em;">
+                <i class="fab fa-github"></i> View Code
+              </a>
+            {% endif %}
+            
+            {% if page.slides %}
+              <a href="{{ page.slides }}" class="btn btn--info" style="font-size: 0.9em; margin-right: 0.5em;">
+                <i class="fas fa-file-powerpoint"></i> View Slides
+              </a>
+            {% endif %}
+            
+            {% if page.video %}
+              <a href="{{ page.video }}" class="btn btn--danger" style="font-size: 0.9em;">
+                <i class="fab fa-youtube"></i> Watch Video
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </section>
+
+      <footer class="page__meta" style="margin-top: 2em; padding-top: 1em; border-top: 1px solid #e8e8e8; font-size: 0.9em;">
+        {% if page.share %}
+          {% include social-share.html %}
+        {% endif %}
+      </footer>
+    </div>
+  </article>
+</div>
+
+<style>
+/* Simple, clean styling for blog posts */
+.page__content {
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.page__content p {
+    margin-bottom: 1.2em;
+}
+
+.page__content h1 {
+    font-size: 1.8em;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+.page__content h2 {
+    font-size: 1.5em;
+    margin-top: 1.3em;
+    margin-bottom: 0.7em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.page__content h3 {
+    font-size: 1.2em;
+    margin-top: 1.1em;
+    margin-bottom: 0.6em;
+}
+
+/* EXTREME FIX: Make ALL code in blog posts small */
+.page__content * {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.page__content .highlighter-rouge,
+.page__content .highlighter-rouge *,
+.page__content .language-python,
+.page__content .language-python *,
+.page__content .language-bash,
+.page__content .language-bash *,
+.page__content .language-text,
+.page__content .language-text *,
+.page__content .highlight,
+.page__content .highlight *,
+.page__content pre,
+.page__content pre *,
+.page__content code,
+.page__content code * {
+    font-size: 0.7em !important;
+    line-height: 1.2 !important;
+}
+
+/* Container styling */
+.page__content .highlighter-rouge,
+.page__content .highlight,
+.page__content pre {
+    padding: 0.6em !important;
+    margin: 0.8em 0 !important;
+    overflow-x: auto !important;
+    background-color: #f8f8f8 !important;
+    border-radius: 4px !important;
+    border: 1px solid #e8e8e8 !important;
+}
+
+/* Inline code */
+.page__content code:not(pre code) {
+    padding: 0.1em 0.3em !important;
+    background-color: #f8f8f8 !important;
+    border-radius: 3px !important;
+    border: 1px solid #e8e8e8 !important;
+    font-family: 'Monaco', 'Consolas', 'Lucida Console', monospace !important;
+}
+
+/* Images */
+.page__content img {
+    max-width: 100%;
+    height: auto;
+    margin: 1.5em 0;
+}
+
+/* Lists */
+.page__content ul,
+.page__content ol {
+    margin-left: 1.5em;
+    margin-bottom: 1.2em;
+}
+
+.page__content li {
+    margin-bottom: 0.5em;
+}
+
+/* Blockquotes */
+.page__content blockquote {
+    margin: 1.5em 0;
+    padding: 0.5em 1em;
+    border-left: 4px solid #e8e8e8;
+    background-color: #f9f9f9;
+    font-style: italic;
+}
+
+/* Tables */
+.page__content table {
+    font-size: 0.9em;
+    margin: 1.5em 0;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.page__content th,
+.page__content td {
+    padding: 0.5em 0.75em;
+    border: 1px solid #e8e8e8;
+}
+
+.page__content th {
+    background-color: #f8f8f8;
+    font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .page__content {
+        font-size: 0.95em;
+    }
+}
+
+/* Fix sidebar overlap */
+@media screen and (min-width: 1024px) {
+    .page {
+        margin-left: 23.5%;
+        padding-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .page {
+        margin-left: 0;
+        padding: 0 1rem;
+    }
+}
+</style>

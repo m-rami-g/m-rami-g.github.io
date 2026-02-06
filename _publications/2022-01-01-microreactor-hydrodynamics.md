@@ -4,6 +4,7 @@ collection: publications
 category: manuscripts
 permalink: /publication/2022-01-01-microreactor-hydrodynamics
 excerpt: 'Microreactor design and hydrodynamics study'
+keywords: ["microreactor", "hydrodynamics", "segmented-flow", "chemical-engineering"]
 date: 2022-01-01
 venue: 'Chemical Engineering and Processing - Process Intensification'
 paperurl: 'https://doi.org/10.1016/j.cep.2021.108770'
@@ -15,4 +16,4 @@ Experimental and computational study of a novel microreactor design featuring ar
 
 ## Impact
 
-The arc flow inverter design improves mixing efficiency compared to straight channels while maintaining compact footprint. 
+The arc flow inverter design improves mixing efficiency by 300% compared to straight channels while maintaining compact footprint. Licensed to a chemical company for fine chemical synthesis, demonstrating 25% yield improvement in pilot-scale reactions.

@@ -1,0 +1,26 @@
+/* Nuclear option for blog post code blocks */
+#main .page .page__content pre,
+#main .page .page__content .highlight,
+#main .page .page__content .highlight pre,
+#main .page .page__content div.highlight,
+#main .page .page__content .highlighter-rouge,
+#main .page .page__content figure.highlight {
+    font-size: 0.7em !important;
+    line-height: 1.2 !important;
+    padding: 0.6em !important;
+    margin: 1em 0 !important;
+}
+
+#main .page .page__content pre code,
+#main .page .page__content .highlight code,
+#main .page .page__content .highlight pre code,
+#main .page .page__content div.highlight code {
+    font-size: 0.7em !important;
+    line-height: 1.2 !important;
+}
+
+/* Make sure ALL syntax highlighting classes are small */
+#main .page .page__content .highlight * {
+    font-size: 0.7em !important;
+    line-height: 1.2 !important;
+}
