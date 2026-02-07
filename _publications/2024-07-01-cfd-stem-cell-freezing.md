@@ -4,7 +4,7 @@ collection: publications
 category: manuscripts
 permalink: /publication/2024-07-01-cfd-stem-cell-freezing
 excerpt: 'CFD modeling for stem cell freezing processes'
-keywords: ["cfd", "computational-fluid-dynamics", "simulation", "stem-cells"]
+keywords: ["CFD", "Pharmaceutical development", "simulation", "stem-cells"]
 date: 2024-07-01
 venue: 'Chemical Engineering Research and Design'
 paperurl: 'https://doi.org/10.1016/j.cherd.2024.07.037'
@@ -16,4 +16,4 @@ Developed a novel CFD model incorporating supercooling phenomena to optimize ste
 
 ## Impact
 
-This research enables scalable stem cell manufacturing for regenerative medicine. The optimized freezing protocol improves cell recovery rates by 35% compared to conventional methods, potentially reducing costs for cell therapy treatments by millions annually.
+This research enables scalable stem cell manufacturing for regenerative medicine. 

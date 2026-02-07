@@ -14,6 +14,4 @@ citation: 'Gaddem, M.R., Kim, J., Matsunami, K., Hayashi, Y., Badr, S., Sugiyama
 
 Systematic review categorizing modeling methodologies for pharmaceutical applications. Provides decision framework for selecting appropriate modeling strategy based on data availability, process complexity, and regulatory requirements across different stages of drug development.
 
-## Impact
 
-Cited in FDA&apos;s emerging technology guidelines. The framework helps companies navigate regulatory pathways for model-based process validation, potentially reducing submission review times by 40% for continuous manufacturing applications.

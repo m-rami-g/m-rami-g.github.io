@@ -12,8 +12,8 @@ citation: 'Gaddem, M.R., Ookawara, S., Nigam, K.D.P., Yoshikawa, S., Matsumoto, 
 ---
 ## Abstract
 
-Experimental and computational study of a novel microreactor design featuring arc-shaped flow inverters. Characterized mixing performance, pressure drop, and residence time distribution for various flow regimes and reactor configurations.
+Experimental and computational study of a novel microreactor design featuring arc-shaped flow inverters. Characterized mixing performance, pressure drop, and residence time distribution in the laminar flow regime for different reactor configurations.
 
 ## Impact
 
-The arc flow inverter design improves mixing efficiency by 300% compared to straight channels while maintaining compact footprint. Licensed to a chemical company for fine chemical synthesis, demonstrating 25% yield improvement in pilot-scale reactions.
+The arc flow inverter designs decrease the micromixing time and result in a better mixing performance for the laminar flow regime which has direct applications in flow chemistry.

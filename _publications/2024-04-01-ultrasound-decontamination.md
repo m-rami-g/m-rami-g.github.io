@@ -4,7 +4,7 @@ collection: publications
 category: manuscripts
 permalink: /publication/2024-04-01-ultrasound-decontamination
 excerpt: 'Model-based design of decontamination technology'
-keywords: ["ultrasound", "decontamination", "food-processing", "non-thermal"]
+keywords: ["ultrasound", "decontamination", "Hydrogen peroxide", "CFD", "Pharmaceutical industry"]
 date: 2024-04-01
 venue: 'Chemical Engineering Research and Design'
 paperurl: 'https://doi.org/10.1016/j.cherd.2024.04.013'
@@ -12,8 +12,8 @@ citation: 'Gaddem, M.R., Hayashi, Y., Scholz, B.X., Futamura, H., Kawasaki, K., 
 ---
 ## Abstract
 
-First-principles model developed to simulate ultrasound-enhanced hydrogen peroxide decontamination. The model couples fluid dynamics, aerosol transport, and chemical kinetics to predict microbial reduction in complex geometries like cleanrooms and isolators.
+First-principles model developed to simulate ultrasound-enhanced hydrogen peroxide decontamination. The model couples fluid dynamics, aerosol transport, and acoustics to predict decontamination agent distribution in pharmaceutical isolators.
 
 ## Impact
 
-Technology adopted by two major pharmaceutical companies for sterile manufacturing. Reduces decontamination cycle time by 60% while maintaining 6-log reduction of microbial contaminants, saving approximately $500,000 annually per facility in operational costs.
+This work is done in the context of developing a commercial decontamination technology for the pharmaceutical industry.
